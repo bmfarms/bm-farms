@@ -18,11 +18,9 @@ const products = [
     title: 'Star Floating Fish Feed',
     entity: 'Star Floating Feed Pvt Ltd',
     icon: Fish,
-    tag: 'Aquaculture',
     description: 'High-protein, highly digestible floating extruded feed designed for maximum Growth & FCR in Tilapia, Pangasius, and Carp farming.',
     specs: ['Crude Protein: 28% - 34%', 'Pellet Size: 1.5mm - 6mm', 'Packaging: 20kg / 40kg Bags'],
     badge: 'Best Seller',
-    gradient: 'from-blue-600/10 to-emerald-600/10',
     borderColor: 'border-blue-200 hover:border-blue-500',
   },
   {
@@ -31,11 +29,9 @@ const products = [
     title: 'Unique Super Broiler Feed',
     entity: 'Unique Super Feed Pvt Ltd',
     icon: Bird,
-    tag: 'Poultry Nutrition',
     description: 'Scientifically formulated starter, grower, and finisher rations for controlled environment broiler farming.',
     specs: ['Optimized FCR Ratio', 'Enriched with Vitamins & Minerals', 'Aflatoxin Tested Clean Feed'],
     badge: 'High Yield',
-    gradient: 'from-amber-600/10 to-emerald-600/10',
     borderColor: 'border-amber-200 hover:border-amber-500',
   },
   {
@@ -44,11 +40,9 @@ const products = [
     title: 'Star Polypropylene (PP) Woven Bags',
     entity: 'Star Polypropylene Pvt Ltd',
     icon: Package,
-    tag: 'Packaging',
     description: 'Heavy-duty PP woven sacks engineered for feed, grain, fertilizer, and chemical storage with high tensile strength.',
     specs: ['GSM Range: 55 - 120 GSM', 'UV Stabilized & Moisture Proof', 'Custom Flexo & BOPP Printing'],
     badge: '3600 Tons/Yr',
-    gradient: 'from-purple-600/10 to-emerald-600/10',
     borderColor: 'border-purple-200 hover:border-purple-500',
   },
   {
@@ -57,11 +51,9 @@ const products = [
     title: 'Commercial Solar PV Systems',
     entity: 'Star Enterprises',
     icon: Sun,
-    tag: 'Solar Energy',
     description: 'Turnkey industrial and agricultural solar energy solutions, net-metering setup, and high-efficiency inverter integrations.',
     specs: ['Tier-1 Solar Panels', 'Net-Metering Support Included', '50 MW Industrial Capacity'],
     badge: 'Eco Friendly',
-    gradient: 'from-emerald-600/10 to-teal-600/10',
     borderColor: 'border-emerald-200 hover:border-emerald-500',
   },
 ];
@@ -73,9 +65,15 @@ export default function ProductCatalogue() {
     ? products 
     : products.filter(p => p.category === activeCategory);
 
+  // FIXED WHATSAPP INQUIRY FUNCTION
   const handleWhatsAppInquiry = (productName: string) => {
-    const message = encodeURIComponent(`Hello BM Farms Team, I am interested in getting a price quote and details for "${productName}". Please guide me.`);
-    window.open(`https://wa.me/923006333064?text=${message}`, '_blank');
+    const phoneNumber = '923006333064'; // Pakistan country code + number without plus
+    const textMessage = encodeURIComponent(`Hello BM Farms Team, I am interested in getting details and a price quote for "${productName}". Please guide me.`);
+    
+    // Direct Universal WhatsApp Web/App URL
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${textMessage}`;
+    
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
