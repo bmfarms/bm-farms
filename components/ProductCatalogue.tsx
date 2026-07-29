@@ -65,21 +65,17 @@ export default function ProductCatalogue() {
     ? products 
     : products.filter(p => p.category === activeCategory);
 
-  // HYBRID MOBILE & DESKTOP WHATSAPP LINK HANDLER
+  // UNIVERSAL RELIABLE WHATSAPP HANDLER
   const handleWhatsAppInquiry = (productName: string) => {
-    const phoneNumber = '923006333064';
+    // International format without '+' or spaces
+    const phoneNumber = '923006333064'; 
     const textMessage = encodeURIComponent(`Hello BM Farms Team, I am interested in getting details and a price quote for "${productName}". Please guide me.`);
     
-    // Check if user is on Mobile Device (Android / iOS)
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    // Standard wa.me universal URL
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${textMessage}`;
 
-    if (isMobile) {
-      // Mobile Native App Protocol Scheme
-      window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${textMessage}`;
-    } else {
-      // Desktop Browser Universal API
-      window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${textMessage}`, '_blank', 'noopener,noreferrer');
-    }
+    // Direct location assignment avoids browser popup blockers on mobile
+    window.location.href = whatsappUrl;
   };
 
   return (
