@@ -9,7 +9,7 @@ const stats = [
   },
   {
     icon: <Fish className="w-8 h-8 text-green-700" />,
-    value: "1,000 Acres",
+    value: "2,000 Acres",
     label: "Fish Farming",
     subtext: "2,500+ Tons Annual Supply"
   },
