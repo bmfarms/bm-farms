@@ -23,14 +23,14 @@ export default function Hero() {
           y: backgroundY,
           backgroundImage: `url('/hero-bg.jpg')`,
         }}
-        className="absolute inset-0 bg-cover bg-center -z-10 scale-105"
+        className="absolute inset-0 bg-cover bg-center scale-105"
       />
       
       {/* Dark Overlay for Readability */}
-      <div className="absolute inset-0 bg-black/40 -z-10" />
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* Hero Text Content */}
-      <motion.div style={{ y: textY, opacity }} className="text-center text-white px-4 max-w-4xl z-10">
+      <motion.div style={{ y: textY, opacity }} className="relative text-center text-white px-4 max-w-4xl z-10">
         <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
           BM Farms & Services
         </h1>
