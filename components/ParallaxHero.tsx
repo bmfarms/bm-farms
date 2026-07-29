@@ -2,33 +2,106 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import Link from 'next/link';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
 export default function ParallaxHero() {
   const ref = useRef(null);
+  
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.4]);
+  // Parallax transform layers
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '45%']);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.25]);
 
   return (
-    <div ref={ref} className="relative h-[80vh] overflow-hidden flex items-center justify-center">
+    <div ref={ref} className="relative h-[80vh] sm:h-[88vh] overflow-hidden flex items-center justify-center bg-gray-950">
+      
+      {/* Parallax Background Layer */}
       <motion.div
         style={{
-          y,
-          opacity,
+          y: backgroundY,
           backgroundImage: `url('/hero-bg.jpg')`,
         }}
-        className="absolute inset-0 bg-cover bg-center -z-10"
+        className="absolute inset-0 bg-cover bg-center scale-105 filter brightness-90"
       />
-      <div className="absolute inset-0 bg-black/40 -z-10" />
       
-      <div className="text-center text-white p-6 max-w-3xl">
-        <h1 className="text-5xl font-extrabold tracking-tight">BM Farms & Services</h1>
-        <p className="mt-4 text-xl">Pioneering Sustainable Agriculture & Modern Farming</p>
-      </div>
+      {/* Dark Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-gray-950/90" />
+
+      {/* Hero Content Layer */}
+      <motion.div 
+        style={{ y: textY, opacity }} 
+        className="relative z-10 text-center text-white p-6 max-w-4xl mx-auto flex flex-col items-center"
+      >
+        {/* Top Tagline Badge */}
+        <motion.span 
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="inline-block px-4 py-1.5 bg-emerald-900/70 border border-emerald-500/30 backdrop-blur-md text-emerald-300 text-xs sm:text-sm font-semibold rounded-full uppercase tracking-widest mb-6"
+        >
+          Sustainable Agribusiness & Industrial Group
+        </motion.span>
+
+        {/* Title */}
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight drop-shadow-md"
+        >
+          BM Farms & Services
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-5 text-lg sm:text-2xl text-emerald-100/90 max-w-2xl font-light leading-relaxed"
+        >
+          Pioneering Sustainable Agriculture & Modern Farming Solutions
+        </motion.p>
+
+        {/* Action Buttons */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-8 flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto"
+        >
+          <Link
+            href="/divisions"
+            className="inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-sm sm:text-base"
+          >
+            <span>Explore Divisions</span>
+            <ArrowRight size={18} />
+          </Link>
+
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center border border-white/30 hover:border-white bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold px-7 py-3.5 rounded-xl transition-all text-sm sm:text-base"
+          >
+            Get In Touch
+          </Link>
+        </motion.div>
+      </motion.div>
+
+      {/* Animated Scroll Down Indicator */}
+      <motion.div 
+        animate={{ y: [0, 8, 0] }}
+        transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 flex flex-col items-center gap-1 z-10"
+      >
+        <span className="text-[10px] uppercase tracking-widest font-semibold">Scroll</span>
+        <ChevronDown size={18} />
+      </motion.div>
+
     </div>
   );
 }
