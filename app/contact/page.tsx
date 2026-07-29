@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -38,95 +39,121 @@ export default function ContactPage() {
         body: JSON.stringify(formData),
       });
 
-      setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully.' });
+      setStatusMessage({ type: 'success', text: 'Shukriya! Aap ka paigham kamyabi se bhej diya gaya hai.' });
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
     } catch (error) {
-      setStatusMessage({ type: 'error', text: 'Failed to send message. Please try again later.' });
+      setStatusMessage({ type: 'error', text: 'Paigham bhejne mein masla hua. Baraye meharbani dobara koshish karein.' });
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col justify-between">
+    <main className="min-h-screen bg-gray-50 flex flex-col justify-between overflow-hidden">
       <div>
         <Navbar />
 
-        {/* Header */}
-        <section className="bg-green-900 text-white py-16 px-4 sm:px-8">
-          <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-4xl font-extrabold tracking-tight">Contact Us</h1>
-            <p className="mt-4 text-green-100 max-w-2xl mx-auto text-sm sm:text-base">
+        {/* Dynamic Header */}
+        <section className="relative bg-gradient-to-r from-green-950 via-emerald-900 to-green-900 text-white py-20 px-4 sm:px-8">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent pointer-events-none" />
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-7xl mx-auto text-center relative z-10"
+          >
+            <span className="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-300 text-xs font-semibold rounded-full uppercase tracking-wider mb-3 border border-emerald-500/30">
+              Reach Out To Us
+            </span>
+            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">Contact Us</h1>
+            <p className="mt-4 text-green-100 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
               Get in touch with BM Farms & Services. We are here to answer your inquiries and discuss potential partnerships.
             </p>
-          </div>
+          </motion.div>
         </section>
 
         {/* Content Section */}
         <section className="py-16 px-4 sm:px-8 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             
             {/* Contact Info */}
-            <div className="space-y-8">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="space-y-8"
+            >
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+                <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Get In Touch</h2>
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                   Have questions about our feeds, farming operations, packaging, or energy solutions? Reach out to us directly or fill out the form.
                 </p>
               </div>
 
               <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-green-100 text-green-800 rounded-xl flex items-center justify-center shrink-0">
+                <motion.div whileHover={{ x: 5 }} className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-gray-200/80 shadow-sm">
+                  <div className="w-12 h-12 bg-emerald-50 text-emerald-700 rounded-xl flex items-center justify-center shrink-0 border border-emerald-100">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900">Head Office</h3>
-                    <p className="text-gray-600 text-sm mt-1">BM Farms & Services Pvt Ltd, Punjab, Pakistan</p>
+                    <p className="text-gray-600 text-sm mt-0.5">BM Farms & Services Pvt Ltd, Punjab, Pakistan</p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-green-100 text-green-800 rounded-xl flex items-center justify-center shrink-0">
+                <motion.div whileHover={{ x: 5 }} className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-gray-200/80 shadow-sm">
+                  <div className="w-12 h-12 bg-emerald-50 text-emerald-700 rounded-xl flex items-center justify-center shrink-0 border border-emerald-100">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900">Phone</h3>
-                    <p className="text-gray-600 text-sm mt-1">+92 300 0000000</p>
+                    <p className="text-gray-600 text-sm mt-0.5">+92 300 0000000</p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-green-100 text-green-800 rounded-xl flex items-center justify-center shrink-0">
+                <motion.div whileHover={{ x: 5 }} className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-gray-200/80 shadow-sm">
+                  <div className="w-12 h-12 bg-emerald-50 text-emerald-700 rounded-xl flex items-center justify-center shrink-0 border border-emerald-100">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900">Email Address</h3>
-                    <p className="text-gray-600 text-sm mt-1">info@bmfarms.pk</p>
+                    <p className="text-gray-600 text-sm mt-0.5">info@bmfarms.pk</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Contact Form */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-white p-8 rounded-3xl border border-gray-200/80 shadow-md"
+            >
+              <h2 className="text-2xl font-extrabold text-gray-900 mb-6">Send Us a Message</h2>
 
               {statusMessage && (
                 <div
-                  className={`p-4 mb-6 rounded-lg text-sm font-medium ${
+                  className={`p-4 mb-6 rounded-xl text-sm font-semibold flex items-center gap-2.5 ${
                     statusMessage.type === 'success'
-                      ? 'bg-green-100 text-green-800 border border-green-200'
-                      : 'bg-red-100 text-red-800 border border-red-200'
+                      ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                      : 'bg-red-50 text-red-800 border border-red-200'
                   }`}
                 >
-                  {statusMessage.text}
+                  {statusMessage.type === 'success' ? (
+                    <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0" />
+                  ) : (
+                    <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
+                  )}
+                  <span>{statusMessage.text}</span>
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Full Name</label>
+                  <label className="block text-sm font-bold text-gray-700 mb-1.5">Full Name</label>
                   <input
                     type="text"
                     name="name"
@@ -134,13 +161,12 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     placeholder="Enter your name"
-                    // ADDED: text-gray-900 class here
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none text-sm transition text-gray-900"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none text-sm transition text-gray-900 bg-gray-50/50 focus:bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Email Address</label>
+                  <label className="block text-sm font-bold text-gray-700 mb-1.5">Email Address</label>
                   <input
                     type="email"
                     name="email"
@@ -148,26 +174,24 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     placeholder="Enter your email"
-                    // ADDED: text-gray-900 class here
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none text-sm transition text-gray-900"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none text-sm transition text-gray-900 bg-gray-50/50 focus:bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Phone Number</label>
+                  <label className="block text-sm font-bold text-gray-700 mb-1.5">Phone Number</label>
                   <input
                     type="text"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+92 300 0000000"
-                    // ADDED: text-gray-900 class here
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none text-sm transition text-gray-900"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none text-sm transition text-gray-900 bg-gray-50/50 focus:bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Subject</label>
+                  <label className="block text-sm font-bold text-gray-700 mb-1.5">Subject</label>
                   <input
                     type="text"
                     name="subject"
@@ -175,13 +199,12 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     placeholder="Inquiry Subject"
-                    // ADDED: text-gray-900 class here
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none text-sm transition text-gray-900"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none text-sm transition text-gray-900 bg-gray-50/50 focus:bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Your Message</label>
+                  <label className="block text-sm font-bold text-gray-700 mb-1.5">Your Message</label>
                   <textarea
                     name="message"
                     rows={4}
@@ -189,21 +212,29 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     placeholder="Type your message here..."
-                    // ADDED: text-gray-900 class here
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none text-sm transition resize-none text-gray-900"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none text-sm transition resize-none text-gray-900 bg-gray-50/50 focus:bg-white"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-green-800 hover:bg-green-900 text-white font-medium py-3 rounded-lg flex items-center justify-center gap-2 transition disabled:opacity-50"
+                  className="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition disabled:opacity-50 shadow-md hover:shadow-lg"
                 >
-                  <Send className="w-4 h-4" />
-                  {loading ? 'Sending...' : 'Send Message'}
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </button>
               </form>
-            </div>
+            </motion.div>
 
           </div>
         </section>
