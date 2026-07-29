@@ -16,11 +16,12 @@ export default function ParallaxHero() {
   return (
     <div ref={ref} className="relative h-[80vh] overflow-hidden flex items-center justify-center">
       <motion.div
-        style={{ y, opacity }}
-        className="absolute inset-0 bg-cover bg-center -z-10"
         style={{
-          backgroundImage: `url('/hero-bg.jpg')`, // Agar aap ke pass hero image hai to uska path ya standard path yahan rahega
+          y,
+          opacity,
+          backgroundImage: `url('/hero-bg.jpg')`,
         }}
+        className="absolute inset-0 bg-cover bg-center -z-10"
       />
       <div className="absolute inset-0 bg-black/40 -z-10" />
       
