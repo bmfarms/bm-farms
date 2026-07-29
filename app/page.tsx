@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
 import ProductCatalogue from '@/components/ProductCatalogue';
-import SolarCalculator from '@/components/SolarCalculator'; // <-- ADD THIS IMPORT
+// import SolarCalculator from '@/components/SolarCalculator'; // Commented out for now
 import DivisionsOverview from '@/components/DivisionsOverview';
 import Footer from '@/components/Footer';
 import WhatsAppWidget from '@/components/WhatsAppWidget';
@@ -27,10 +27,12 @@ export default function Home() {
         <ProductCatalogue />
       </FadeIn>
 
-      {/* Solar Feasibility Calculator */}
+      {/* Solar Feasibility Calculator (Temporarily Disabled) */}
+      {/* 
       <FadeIn delay={0.25}>
-        <SolarCalculator /> {/* <-- ADD THIS COMPONENT */}
-      </FadeIn>
+        <SolarCalculator />
+      </FadeIn> 
+      */}
 
       {/* Dynamic Division Tabs Section */}
       <FadeIn delay={0.3}>
