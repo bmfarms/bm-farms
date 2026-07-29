@@ -65,15 +65,21 @@ export default function ProductCatalogue() {
     ? products 
     : products.filter(p => p.category === activeCategory);
 
-  // FIXED WHATSAPP INQUIRY FUNCTION
+  // HYBRID MOBILE & DESKTOP WHATSAPP LINK HANDLER
   const handleWhatsAppInquiry = (productName: string) => {
-    const phoneNumber = '923006333064'; // Pakistan country code + number without plus
+    const phoneNumber = '923006333064';
     const textMessage = encodeURIComponent(`Hello BM Farms Team, I am interested in getting details and a price quote for "${productName}". Please guide me.`);
     
-    // Direct Universal WhatsApp Web/App URL
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${textMessage}`;
-    
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    // Check if user is on Mobile Device (Android / iOS)
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // Mobile Native App Protocol Scheme
+      window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${textMessage}`;
+    } else {
+      // Desktop Browser Universal API
+      window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${textMessage}`, '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (
