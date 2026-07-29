@@ -3,6 +3,7 @@ import DivisionTabs from '@/components/DivisionTabs';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
+import ProductCatalogue from '@/components/ProductCatalogue';
 import DivisionsOverview from '@/components/DivisionsOverview';
 import Footer from '@/components/Footer';
 
@@ -19,8 +20,13 @@ export default function Home() {
         <Stats />
       </FadeIn>
 
-      {/* Dynamic Division Tabs Section */}
+      {/* Product & Commercial Catalogue Section */}
       <FadeIn delay={0.2}>
+        <ProductCatalogue />
+      </FadeIn>
+
+      {/* Dynamic Division Tabs Section */}
+      <FadeIn delay={0.3}>
         <section className="py-12 bg-gray-100/60">
           <div className="text-center mb-4">
             <h2 className="text-3xl font-extrabold text-gray-900">Explore Our Business Divisions</h2>
@@ -31,7 +37,7 @@ export default function Home() {
       </FadeIn>
 
       {/* Divisions Overview Section */}
-      <FadeIn delay={0.3}>
+      <FadeIn delay={0.4}>
         <DivisionsOverview />
       </FadeIn>
 
