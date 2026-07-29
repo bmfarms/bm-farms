@@ -4,9 +4,10 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
 import ProductCatalogue from '@/components/ProductCatalogue';
+import SolarCalculator from '@/components/SolarCalculator'; // <-- ADD THIS IMPORT
 import DivisionsOverview from '@/components/DivisionsOverview';
 import Footer from '@/components/Footer';
-import WhatsAppWidget from '@/components/WhatsAppWidget'; // <-- ADD THIS IMPORT
+import WhatsAppWidget from '@/components/WhatsAppWidget';
 
 export default function Home() {
   return (
@@ -16,14 +17,19 @@ export default function Home() {
       {/* Hero Section */}
       <Hero />
 
-      {/* Stats Section with FadeIn */}
+      {/* Stats Section */}
       <FadeIn delay={0.1}>
         <Stats />
       </FadeIn>
 
-      {/* Product & Commercial Catalogue Section */}
+      {/* Product & Commercial Catalogue */}
       <FadeIn delay={0.2}>
         <ProductCatalogue />
+      </FadeIn>
+
+      {/* Solar Feasibility Calculator */}
+      <FadeIn delay={0.25}>
+        <SolarCalculator /> {/* <-- ADD THIS COMPONENT */}
       </FadeIn>
 
       {/* Dynamic Division Tabs Section */}
@@ -45,7 +51,7 @@ export default function Home() {
       <Footer />
 
       {/* Persistent Floating Widget */}
-      <WhatsAppWidget /> {/* <-- ADD THIS COMPONENT */}
+      <WhatsAppWidget />
     </main>
   );
 }
