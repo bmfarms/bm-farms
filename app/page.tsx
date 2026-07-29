@@ -6,6 +6,7 @@ import Stats from '@/components/Stats';
 import ProductCatalogue from '@/components/ProductCatalogue';
 import DivisionsOverview from '@/components/DivisionsOverview';
 import Footer from '@/components/Footer';
+import WhatsAppWidget from '@/components/WhatsAppWidget'; // <-- ADD THIS IMPORT
 
 export default function Home() {
   return (
@@ -42,6 +43,9 @@ export default function Home() {
       </FadeIn>
 
       <Footer />
+
+      {/* Persistent Floating Widget */}
+      <WhatsAppWidget /> {/* <-- ADD THIS COMPONENT */}
     </main>
   );
 }
