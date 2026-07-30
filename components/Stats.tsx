@@ -11,7 +11,7 @@ const stats = [
     suffix: '+',
     label: 'Broiler Capacity',
     subtext: '18 Environment Houses',
-    bgImage: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=800&auto=format&fit=crop',
+    bgImage: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=600&auto=format&fit=crop',
   },
   {
     icon: Fish,
@@ -19,7 +19,7 @@ const stats = [
     suffix: ' Acres',
     label: 'Fish Farming',
     subtext: '2,500+ Tons Annual Supply',
-    bgImage: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop',
+    bgImage: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600&auto=format&fit=crop',
   },
   {
     icon: Factory,
@@ -27,7 +27,7 @@ const stats = [
     suffix: '',
     label: 'Bags / Month',
     subtext: 'High-Capacity Feed Output',
-    bgImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop',
+    bgImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop',
   },
   {
     icon: Package,
@@ -35,7 +35,7 @@ const stats = [
     suffix: ' Tons',
     label: 'PP Bags / Year',
     subtext: 'Industrial Packaging',
-    bgImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop',
+    bgImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop',
   },
   {
     icon: Sun,
@@ -43,18 +43,18 @@ const stats = [
     suffix: ' MW',
     label: 'Solar Energy Project',
     subtext: 'Clean Energy Output',
-    bgImage: 'https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=800&auto=format&fit=crop',
+    bgImage: 'https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=600&auto=format&fit=crop',
   },
 ];
 
 export default function Stats() {
   return (
-    <section className="py-16 bg-white border-b border-gray-100 relative overflow-hidden">
+    <section className="py-16 bg-gray-50 border-b border-gray-100 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Section Heading */}
         <div className="text-center mb-10">
-          <span className="text-xs font-bold text-emerald-800 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
+          <span className="text-xs font-bold text-emerald-800 uppercase tracking-widest bg-emerald-100/80 px-3 py-1 rounded-full border border-emerald-200">
             Our Key Milestones
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2">
@@ -62,7 +62,7 @@ export default function Stats() {
           </h2>
         </div>
 
-        {/* Stats Grid with Background Image Cards */}
+        {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {stats.map((item, index) => {
             const Icon = item.icon;
@@ -74,33 +74,33 @@ export default function Stats() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-2xl h-72 flex flex-col justify-between p-6 shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-200 transform hover:-translate-y-1.5"
+                className="group flex flex-col justify-between rounded-2xl bg-white border border-gray-200/80 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300 transform hover:-translate-y-1.5 overflow-hidden"
               >
-                {/* Background Image with Zoom effect */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${item.bgImage})` }}
-                />
-
-                {/* Dark Gradient Overlay for optimal text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40 group-hover:via-black/70 transition-all duration-300" />
-
-                {/* Top Icon Badge */}
-                <div className="relative z-10 self-start p-3 bg-emerald-500/20 backdrop-blur-md rounded-2xl border border-emerald-400/30 text-emerald-300 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                  <Icon className="w-6 h-6" />
+                {/* Top Image Banner with Floating Icon */}
+                <div className="relative h-28 w-full overflow-hidden">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                    style={{ backgroundImage: `url(${item.bgImage})` }}
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
+                  
+                  {/* Floating Icon Badge */}
+                  <div className="absolute top-3 left-3 p-2.5 bg-white/90 backdrop-blur-md text-emerald-800 rounded-xl border border-white/50 shadow-md">
+                    <Icon className="w-5 h-5" />
+                  </div>
                 </div>
 
-                {/* Text Content + Counter */}
-                <div className="relative z-10 text-white space-y-1">
-                  <div className="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-emerald-300 transition-colors">
+                {/* Clean Bottom Text Content */}
+                <div className="p-5 text-center flex-1 flex flex-col justify-center">
+                  <div className="text-2xl sm:text-3xl font-black text-emerald-900 tracking-tight">
                     <Counter end={item.numericValue} suffix={item.suffix} />
                   </div>
 
-                  <span className="text-sm font-bold text-gray-100 block">
+                  <span className="text-sm font-bold text-gray-900 mt-1">
                     {item.label}
                   </span>
 
-                  <span className="text-xs text-emerald-300/90 font-medium block">
+                  <span className="text-xs text-gray-500 font-medium mt-1">
                     {item.subtext}
                   </span>
                 </div>
