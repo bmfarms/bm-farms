@@ -1,7 +1,6 @@
 'use client';
 
 import { Fish, Bird, Factory, Package, Sun } from 'lucide-react';
-import { motion } from 'framer-motion';
 import Counter from '@/components/Counter';
 
 const stats = [
@@ -47,7 +46,7 @@ const stats = [
   },
 ];
 
-// Array ko duplicate kar rahe hain seamless seamless loop ke liye
+// Array duplication for smooth loop
 const marqueeStats = [...stats, ...stats, ...stats];
 
 export default function Stats() {
@@ -67,24 +66,29 @@ export default function Stats() {
 
       </div>
 
+      {/* Inline Keyframes CSS for guaranteed Pause-on-Hover */}
+      <style jsx>{`
+        @keyframes marquee {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-33.333%); }
+        }
+        .animate-marquee {
+          display: flex;
+          width: max-content;
+          animation: marquee 25s linear infinite;
+        }
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       {/* Infinite Continuous Slider Container */}
       <div className="relative w-full overflow-hidden flex py-2">
-        {/* Left & Right Gradient Shadows for seamless fade effect */}
+        {/* Gradient Shadows on Edges */}
         <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
 
-        <motion.div
-          className="flex gap-6 shrink-0"
-          animate={{
-            x: ['0%', '-33.333%'],
-          }}
-          transition={{
-            ease: 'linear',
-            duration: 25,
-            repeat: Infinity,
-          }}
-          whileHover={{ animationPlayState: 'paused' }}
-        >
+        <div className="animate-marquee gap-6">
           {marqueeStats.map((item, index) => {
             const Icon = item.icon;
 
@@ -124,7 +128,7 @@ export default function Stats() {
               </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
