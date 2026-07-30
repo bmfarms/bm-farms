@@ -21,12 +21,32 @@ export default function Navbar() {
   return (
     <header className="w-full sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
       
+      {/* Mobile-Only Keyframe Animation Style */}
+      <style jsx>{`
+        @media (max-width: 639px) {
+          @keyframes topBarMarquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-topbar-mobile {
+            display: flex;
+            width: max-content;
+            animation: topBarMarquee 15s linear infinite;
+          }
+          .animate-topbar-mobile:hover {
+            animation-play-state: paused;
+          }
+        }
+      `}</style>
+
       {/* Top Bar for Contact Info */}
-      <div className="bg-emerald-900 text-white text-[11px] sm:text-xs py-2 px-3 sm:px-8 border-b border-emerald-800/50">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-y-1">
+      <div className="bg-emerald-900 text-white text-[11px] sm:text-xs py-2 px-3 sm:px-8 border-b border-emerald-800/50 overflow-hidden relative">
+        <div className="max-w-7xl mx-auto flex sm:justify-between items-center">
           
-          {/* Phone & Email Container (Mobile + Desktop Visible) */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+          {/* Marquee Wrapper for Mobile / Static Flex for Desktop */}
+          <div className="animate-topbar-mobile sm:animate-none flex items-center gap-6 sm:gap-6">
+            
+            {/* Set 1: Mobile & Desktop items */}
             <a 
               href="tel:+923006333064" 
               className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors whitespace-nowrap"
@@ -42,12 +62,36 @@ export default function Navbar() {
               <Mail size={13} className="text-emerald-400 shrink-0" />
               <span>starfloatingfeedofficial@gmail.com</span>
             </a>
-          </div>
 
-          {/* Location Tag */}
-          <div className="text-emerald-200 hidden sm:flex items-center gap-1 text-[11px] font-medium">
-            <MapPin size={12} className="text-emerald-400 shrink-0" />
-            <span>Multan, Pakistan</span>
+            <div className="flex items-center gap-1 text-[11px] text-emerald-200 whitespace-nowrap">
+              <MapPin size={12} className="text-emerald-400 shrink-0" />
+              <span>Multan, Pakistan</span>
+            </div>
+
+            {/* Set 2 (Duplicate for Seamless Infinite Loop on Mobile Only) */}
+            <div className="flex sm:hidden items-center gap-6">
+              <a 
+                href="tel:+923006333064" 
+                className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors whitespace-nowrap"
+              >
+                <Phone size={13} className="text-emerald-400 shrink-0" />
+                <span>+92 300 6333064</span>
+              </a>
+
+              <a 
+                href="mailto:starfloatingfeedofficial@gmail.com" 
+                className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors whitespace-nowrap"
+              >
+                <Mail size={13} className="text-emerald-400 shrink-0" />
+                <span>starfloatingfeedofficial@gmail.com</span>
+              </a>
+
+              <div className="flex items-center gap-1 text-[11px] text-emerald-200 whitespace-nowrap">
+                <MapPin size={12} className="text-emerald-400 shrink-0" />
+                <span>Multan, Pakistan</span>
+              </div>
+            </div>
+
           </div>
 
         </div>
