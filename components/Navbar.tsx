@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <header className="w-full sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
       
-      {/* Mobile-Only Keyframe Animation Style */}
+      {/* Mobile-Only Marquee Styling */}
       <style jsx>{`
         @media (max-width: 639px) {
           @keyframes topBarMarquee {
@@ -43,33 +43,11 @@ export default function Navbar() {
       <div className="bg-emerald-900 text-white text-[11px] sm:text-xs py-2 px-3 sm:px-8 border-b border-emerald-800/50 overflow-hidden relative">
         <div className="max-w-7xl mx-auto flex sm:justify-between items-center">
           
-          {/* Marquee Wrapper for Mobile / Static Flex for Desktop */}
-          <div className="animate-topbar-mobile sm:animate-none flex items-center gap-6 sm:gap-6">
+          {/* Container: Mobile Marquee & Desktop Balanced Flex Layout */}
+          <div className="animate-topbar-mobile sm:animate-none flex items-center justify-between w-full gap-6 sm:gap-0">
             
-            {/* Set 1: Mobile & Desktop items */}
-            <a 
-              href="tel:+923006333064" 
-              className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors whitespace-nowrap"
-            >
-              <Phone size={13} className="text-emerald-400 shrink-0" />
-              <span>+92 300 6333064</span>
-            </a>
-
-            <a 
-              href="mailto:starfloatingfeedofficial@gmail.com" 
-              className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors whitespace-nowrap"
-            >
-              <Mail size={13} className="text-emerald-400 shrink-0" />
-              <span>starfloatingfeedofficial@gmail.com</span>
-            </a>
-
-            <div className="flex items-center gap-1 text-[11px] text-emerald-200 whitespace-nowrap">
-              <MapPin size={12} className="text-emerald-400 shrink-0" />
-              <span>Multan, Pakistan</span>
-            </div>
-
-            {/* Set 2 (Duplicate for Seamless Infinite Loop on Mobile Only) */}
-            <div className="flex sm:hidden items-center gap-6">
+            {/* Left Side (Desktop): Phone & Email */}
+            <div className="flex items-center gap-4 sm:gap-6 shrink-0">
               <a 
                 href="tel:+923006333064" 
                 className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors whitespace-nowrap"
@@ -85,11 +63,36 @@ export default function Navbar() {
                 <Mail size={13} className="text-emerald-400 shrink-0" />
                 <span>starfloatingfeedofficial@gmail.com</span>
               </a>
+            </div>
 
+            {/* Right Side (Desktop): Location */}
+            <div className="hidden sm:flex items-center gap-1 text-[11px] text-emerald-200 shrink-0 font-medium">
+              <MapPin size={12} className="text-emerald-400 shrink-0" />
+              <span>Multan, Pakistan</span>
+            </div>
+
+            {/* Set 2 (Mobile Only Duplicate for Seamless Infinite Loop) */}
+            <div className="flex sm:hidden items-center gap-6 shrink-0">
               <div className="flex items-center gap-1 text-[11px] text-emerald-200 whitespace-nowrap">
                 <MapPin size={12} className="text-emerald-400 shrink-0" />
                 <span>Multan, Pakistan</span>
               </div>
+
+              <a 
+                href="tel:+923006333064" 
+                className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors whitespace-nowrap"
+              >
+                <Phone size={13} className="text-emerald-400 shrink-0" />
+                <span>+92 300 6333064</span>
+              </a>
+
+              <a 
+                href="mailto:starfloatingfeedofficial@gmail.com" 
+                className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors whitespace-nowrap"
+              >
+                <Mail size={13} className="text-emerald-400 shrink-0" />
+                <span>starfloatingfeedofficial@gmail.com</span>
+              </a>
             </div>
 
           </div>
