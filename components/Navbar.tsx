@@ -22,28 +22,34 @@ export default function Navbar() {
     <header className="w-full sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
       
       {/* Top Bar for Contact Info */}
-      <div className="bg-emerald-900 text-white text-xs py-2 px-4 sm:px-8 border-b border-emerald-800/50">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-4 sm:gap-6">
+      <div className="bg-emerald-900 text-white text-[11px] sm:text-xs py-2 px-3 sm:px-8 border-b border-emerald-800/50">
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-y-1">
+          
+          {/* Phone & Email Container (Mobile + Desktop Visible) */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <a 
               href="tel:+923006333064" 
-              className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors"
+              className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors whitespace-nowrap"
             >
-              <Phone size={13} className="text-emerald-400" />
+              <Phone size={13} className="text-emerald-400 shrink-0" />
               <span>+92 300 6333064</span>
             </a>
+
             <a 
               href="mailto:starfloatingfeedofficial@gmail.com" 
-              className="hidden md:flex items-center gap-1.5 hover:text-emerald-300 transition-colors"
+              className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors whitespace-nowrap"
             >
-              <Mail size={13} className="text-emerald-400" />
+              <Mail size={13} className="text-emerald-400 shrink-0" />
               <span>starfloatingfeedofficial@gmail.com</span>
             </a>
           </div>
+
+          {/* Location Tag */}
           <div className="text-emerald-200 hidden sm:flex items-center gap-1 text-[11px] font-medium">
-            <MapPin size={12} className="text-emerald-400" />
+            <MapPin size={12} className="text-emerald-400 shrink-0" />
             <span>Multan, Pakistan</span>
           </div>
+
         </div>
       </div>
 
