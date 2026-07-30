@@ -46,7 +46,7 @@ const stats = [
   },
 ];
 
-// Array duplication for smooth loop
+// Continuous loop ke liye items duplicate kar rahe hain
 const marqueeStats = [...stats, ...stats, ...stats];
 
 export default function Stats() {
@@ -66,25 +66,29 @@ export default function Stats() {
 
       </div>
 
-      {/* Inline Keyframes CSS for guaranteed Pause-on-Hover */}
+      {/* GPU Accelerated Marquee Styling */}
       <style jsx>{`
         @keyframes marquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-33.333%); }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-33.333%, 0, 0); }
         }
         .animate-marquee {
           display: flex;
           width: max-content;
           animation: marquee 25s linear infinite;
+          will-change: transform;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
-        .animate-marquee:hover {
+        .animate-marquee:hover,
+        .animate-marquee:active {
           animation-play-state: paused;
         }
       `}</style>
 
       {/* Infinite Continuous Slider Container */}
-      <div className="relative w-full overflow-hidden flex py-2">
-        {/* Gradient Shadows on Edges */}
+      <div className="relative w-full overflow-hidden flex py-2 select-none touch-pan-y">
+        {/* Edge Gradients */}
         <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
 
@@ -95,15 +99,16 @@ export default function Stats() {
             return (
               <div
                 key={index}
-                className="w-64 sm:w-72 shrink-0 group flex flex-col justify-between rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all duration-300 overflow-hidden cursor-pointer"
+                className="w-64 sm:w-72 shrink-0 group flex flex-col justify-between rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all duration-300 overflow-hidden cursor-pointer transform-gpu"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 {/* Top Image Banner */}
                 <div className="relative h-44 w-full overflow-hidden">
                   <div 
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 sm:group-hover:scale-110"
                     style={{ backgroundImage: `url(${item.bgImage})` }}
                   />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                  <div className="absolute inset-0 bg-black/20 sm:group-hover:bg-black/10 transition-colors" />
                   
                   {/* Floating Icon Badge */}
                   <div className="absolute top-3 left-3 p-2 bg-white/95 backdrop-blur-md text-emerald-800 rounded-xl border border-white/60 shadow-md">
@@ -111,7 +116,7 @@ export default function Stats() {
                   </div>
                 </div>
 
-                {/* Compact White Content Area */}
+                {/* Compact Content Area */}
                 <div className="p-3.5 text-center flex-1 flex flex-col justify-center bg-white">
                   <div className="text-2xl font-black text-emerald-900 tracking-tight leading-none">
                     <Counter end={item.numericValue} suffix={item.suffix} />
