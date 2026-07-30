@@ -1,7 +1,7 @@
 'use client';
 
 import { Fish, Bird, Factory, Package, Sun } from 'lucide-react';
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Counter from '@/components/Counter';
 
 const stats = [
@@ -47,104 +47,12 @@ const stats = [
   },
 ];
 
-// Interactive 3D Tilt Card Component
-function TiltCard({ item, index }: { item: typeof stats[0]; index: number }) {
-  const Icon = item.icon;
-
-  // Motion values for tilt coordinates
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  // Smooth springs for fluid motion
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 15 });
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 15 });
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['12deg', '-12deg']);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-12deg', '12deg']);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      style={{ perspective: 1000 }}
-    >
-      <motion.div
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{
-          rotateX,
-          rotateY,
-          transformStyle: 'preserve-3d',
-        }}
-        className="group relative flex flex-col justify-between rounded-2xl bg-white border border-gray-200/80 shadow-md hover:shadow-2xl hover:border-emerald-400 transition-shadow duration-300 overflow-hidden cursor-pointer"
-      >
-        {/* Top Image Banner */}
-        <div className="relative h-44 w-full overflow-hidden">
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-115"
-            style={{ backgroundImage: `url(${item.bgImage})` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent group-hover:bg-black/10 transition-colors duration-300" />
-          
-          {/* Floating Glassmorphism Icon Badge */}
-          <div 
-            style={{ transform: 'translateZ(20px)' }} 
-            className="absolute top-3 left-3 p-2 bg-white/90 backdrop-blur-md text-emerald-800 rounded-xl border border-white/60 shadow-lg group-hover:bg-emerald-800 group-hover:text-white transition-colors duration-300"
-          >
-            <Icon className="w-4 h-4" />
-          </div>
-        </div>
-
-        {/* Compact White Content Area */}
-        <div 
-          style={{ transform: 'translateZ(15px)' }} 
-          className="p-3.5 text-center flex-1 flex flex-col justify-center bg-white"
-        >
-          <div className="text-2xl font-black text-emerald-900 tracking-tight leading-none group-hover:scale-105 transition-transform duration-300">
-            <Counter end={item.numericValue} suffix={item.suffix} />
-          </div>
-
-          <span className="text-xs font-bold text-gray-900 mt-1 leading-tight">
-            {item.label}
-          </span>
-
-          <span className="text-[10px] text-gray-500 font-medium mt-0.5">
-            {item.subtext}
-          </span>
-        </div>
-
-        {/* Subtle Shine/Glow overlay on hover */}
-        <div className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-emerald-400/40 transition-all duration-300" />
-      </motion.div>
-    </motion.div>
-  );
-}
+// Array ko duplicate kar rahe hain seamless seamless loop ke liye
+const marqueeStats = [...stats, ...stats, ...stats];
 
 export default function Stats() {
   return (
-    <section className="py-12 bg-gray-50 border-b border-gray-100 relative overflow-hidden">
+    <section className="py-12 bg-gray-50 border-b border-gray-100 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Section Heading */}
@@ -157,13 +65,66 @@ export default function Stats() {
           </h2>
         </div>
 
-        {/* Stats Grid with 3D Tilt Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-          {stats.map((item, index) => (
-            <TiltCard key={index} item={item} index={index} />
-          ))}
-        </div>
+      </div>
 
+      {/* Infinite Continuous Slider Container */}
+      <div className="relative w-full overflow-hidden flex py-2">
+        {/* Left & Right Gradient Shadows for seamless fade effect */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
+
+        <motion.div
+          className="flex gap-6 shrink-0"
+          animate={{
+            x: ['0%', '-33.333%'],
+          }}
+          transition={{
+            ease: 'linear',
+            duration: 25,
+            repeat: Infinity,
+          }}
+          whileHover={{ animationPlayState: 'paused' }}
+        >
+          {marqueeStats.map((item, index) => {
+            const Icon = item.icon;
+
+            return (
+              <div
+                key={index}
+                className="w-64 sm:w-72 shrink-0 group flex flex-col justify-between rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all duration-300 overflow-hidden cursor-pointer"
+              >
+                {/* Top Image Banner */}
+                <div className="relative h-44 w-full overflow-hidden">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                    style={{ backgroundImage: `url(${item.bgImage})` }}
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                  
+                  {/* Floating Icon Badge */}
+                  <div className="absolute top-3 left-3 p-2 bg-white/95 backdrop-blur-md text-emerald-800 rounded-xl border border-white/60 shadow-md">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                </div>
+
+                {/* Compact White Content Area */}
+                <div className="p-3.5 text-center flex-1 flex flex-col justify-center bg-white">
+                  <div className="text-2xl font-black text-emerald-900 tracking-tight leading-none">
+                    <Counter end={item.numericValue} suffix={item.suffix} />
+                  </div>
+
+                  <span className="text-xs font-bold text-gray-900 mt-1 leading-tight">
+                    {item.label}
+                  </span>
+
+                  <span className="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {item.subtext}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
