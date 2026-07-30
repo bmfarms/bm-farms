@@ -107,7 +107,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Leadership Section */}
+        {/* Leadership Section - Option A Hover Reveal Style */}
         <section className="py-20 bg-white border-t border-gray-100 px-4 sm:px-8">
           <div className="max-w-7xl mx-auto">
             <motion.div 
@@ -120,33 +120,48 @@ export default function AboutPage() {
               <h2 className="text-3xl font-extrabold text-gray-900 mt-1">Guiding Our Success</h2>
             </motion.div>
             
+            {/* Interactive Overlay Card */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -6 }}
               transition={{ duration: 0.4 }}
-              className="max-w-md mx-auto bg-gray-50/80 border border-gray-200/80 p-8 rounded-3xl text-center shadow-lg hover:shadow-xl transition-all relative overflow-hidden group"
+              className="max-w-sm mx-auto h-[420px] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 relative group cursor-pointer border border-emerald-100"
             >
-              <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-emerald-600 to-green-700" />
-              
-              {/* Profile Image Container */}
-              <div className="relative w-28 h-28 mx-auto mb-5 overflow-hidden rounded-full border-4 border-white shadow-md group-hover:scale-105 transition-transform duration-300">
+              {/* Image Background */}
+              <div className="relative w-full h-full">
                 <Image 
                   src="/ceo.png" 
                   alt="Mr. Malik Azhar Mushtaq" 
                   fill 
-                  className="object-cover" 
+                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105" 
                 />
+                {/* Dark Overlay Tint */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 transition-colors" />
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900">Mr. Malik Azhar Mushtaq</h3>
-              <p className="text-emerald-700 font-semibold text-xs tracking-wider uppercase mt-1">
-                CEO & Director - BM Farms & Services Pvt Ltd
-              </p>
-              <p className="mt-4 text-sm text-gray-600 leading-relaxed">
-                A leading figure in Pakistan's aquaculture, feed manufacturing, and modern integrated farming sectors with over 12 years of specialized industry experience.
-              </p>
+              {/* Hover Pop-Up Content Container */}
+              <div className="absolute bottom-0 inset-x-0 p-6 text-white flex flex-col justify-end transition-all duration-500 transform translate-y-[85px] group-hover:translate-y-0 bg-gradient-to-t from-emerald-950 via-emerald-950/95 to-transparent">
+                
+                {/* Always Visible Text (Name & Title) */}
+                <div>
+                  <h3 className="text-2xl font-bold tracking-tight text-white">
+                    Mr. Malik Azhar Mushtaq
+                  </h3>
+                  <p className="text-xs font-semibold text-emerald-400 uppercase tracking-wider mt-1">
+                    CEO & Director - BM Farms & Services Pvt Ltd
+                  </p>
+                </div>
+
+                {/* Pop-Up Description (Reveals on Hover / Touch) */}
+                <p className="text-xs text-gray-200 mt-4 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                  A leading figure in Pakistan&apos;s aquaculture, feed manufacturing, and modern integrated farming sectors with over 12 years of specialized industry experience.
+                </p>
+
+                {/* Subtle Accent Line */}
+                <div className="w-10 h-1 bg-emerald-500 rounded-full mt-4 group-hover:w-full transition-all duration-500" />
+              </div>
+
             </motion.div>
           </div>
         </section>
