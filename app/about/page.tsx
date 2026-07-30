@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
@@ -7,6 +8,9 @@ import { Target, CheckCircle2, Award, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function AboutPage() {
+  // Mobile tap state management
+  const [isTouched, setIsTouched] = useState(false);
+
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col justify-between overflow-hidden">
       <div>
@@ -107,7 +111,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Leadership Section - Option A Hover Reveal Style */}
+        {/* Leadership Section - Option A (Touch & Hover Responsive) */}
         <section className="py-20 bg-white border-t border-gray-100 px-4 sm:px-8">
           <div className="max-w-7xl mx-auto">
             <motion.div 
@@ -120,13 +124,16 @@ export default function AboutPage() {
               <h2 className="text-3xl font-extrabold text-gray-900 mt-1">Guiding Our Success</h2>
             </motion.div>
             
-            {/* Interactive Overlay Card */}
+            {/* Interactive Card (Hover & Mobile Tap Support) */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="max-w-sm mx-auto h-[420px] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 relative group cursor-pointer border border-emerald-100"
+              onClick={() => setIsTouched(!isTouched)}
+              className={`max-w-sm mx-auto h-[420px] rounded-3xl overflow-hidden shadow-xl transition-all duration-500 relative cursor-pointer border border-emerald-100 group select-none ${
+                isTouched ? 'shadow-2xl' : ''
+              }`}
             >
               {/* Image Background */}
               <div className="relative w-full h-full">
@@ -134,14 +141,22 @@ export default function AboutPage() {
                   src="/ceo.png" 
                   alt="Mr. Malik Azhar Mushtaq" 
                   fill 
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105" 
+                  className={`object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 ${
+                    isTouched ? 'scale-105' : ''
+                  }`} 
                 />
                 {/* Dark Overlay Tint */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 transition-colors" />
+                <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-colors ${
+                  isTouched ? 'from-black/90' : 'group-hover:from-black/90'
+                }`} />
               </div>
 
-              {/* Hover Pop-Up Content Container */}
-              <div className="absolute bottom-0 inset-x-0 p-6 text-white flex flex-col justify-end transition-all duration-500 transform translate-y-[85px] group-hover:translate-y-0 bg-gradient-to-t from-emerald-950 via-emerald-950/95 to-transparent">
+              {/* Hover & Tap Pop-Up Content Container */}
+              <div className={`absolute bottom-0 inset-x-0 p-6 text-white flex flex-col justify-end transition-all duration-500 transform bg-gradient-to-t from-emerald-950 via-emerald-950/95 to-transparent ${
+                isTouched 
+                  ? 'translate-y-0' 
+                  : 'translate-y-[85px] group-hover:translate-y-0'
+              }`}>
                 
                 {/* Always Visible Text (Name & Title) */}
                 <div>
@@ -153,13 +168,21 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                {/* Pop-Up Description (Reveals on Hover / Touch) */}
-                <p className="text-xs text-gray-200 mt-4 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                {/* Pop-Up Description (Reveals on Hover / Touch Tap) */}
+                <p className={`text-xs text-gray-200 mt-4 leading-relaxed transition-opacity duration-300 delay-100 ${
+                  isTouched 
+                    ? 'opacity-100' 
+                    : 'opacity-0 group-hover:opacity-100'
+                }`}>
                   A leading figure in Pakistan&apos;s aquaculture, feed manufacturing, and modern integrated farming sectors with over 12 years of specialized industry experience.
                 </p>
 
                 {/* Subtle Accent Line */}
-                <div className="w-10 h-1 bg-emerald-500 rounded-full mt-4 group-hover:w-full transition-all duration-500" />
+                <div className={`h-1 bg-emerald-500 rounded-full mt-4 transition-all duration-500 ${
+                  isTouched 
+                    ? 'w-full' 
+                    : 'w-10 group-hover:w-full'
+                }`} />
               </div>
 
             </motion.div>
