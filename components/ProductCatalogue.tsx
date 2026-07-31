@@ -31,8 +31,8 @@ const products = [
     badge: 'Best Seller',
     badgeColor: 'bg-blue-100 text-blue-900 border-blue-200',
     borderColor: 'border-blue-200 hover:border-blue-500',
-    // High Quality Commercial Fish Farming Feed Pellets / Aquaculture
-    image: 'https://images.unsplash.com/photo-1516683011827-468828892641?q=80&w=800&auto=format&fit=crop',
+    // Local Image from /public/ directory
+    image: '/Fish Feed.png',
     specs: [
       { label: 'Crude Protein', value: '28% - 34%' },
       { label: 'Pellet Size', value: '1.5mm - 6mm' },
@@ -49,8 +49,8 @@ const products = [
     badge: 'High Yield',
     badgeColor: 'bg-amber-100 text-amber-900 border-amber-200',
     borderColor: 'border-amber-200 hover:border-amber-500',
-    // Commercial Poultry Feed Grains & Formulations
-    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop',
+    // Local Image from /public/ directory
+    image: '/Broiler Feed.png',
     specs: [
       { label: 'FCR Ratio', value: 'Optimized' },
       { label: 'Nutrition', value: 'Vitamins & Minerals' },
@@ -67,8 +67,8 @@ const products = [
     badge: '3600 Tons/Yr',
     badgeColor: 'bg-purple-100 text-purple-900 border-purple-200',
     borderColor: 'border-purple-200 hover:border-purple-500',
-    // Industrial Grain Sacks & Packaging Factory
-    image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&auto=format&fit=crop',
+    // Local Image from /public/ directory
+    image: '/Polypropylene Bags.png',
     specs: [
       { label: 'GSM Range', value: '55 - 120 GSM' },
       { label: 'Protection', value: 'UV & Moisture Proof' },
@@ -85,8 +85,8 @@ const products = [
     badge: 'Eco Friendly',
     badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-200',
     borderColor: 'border-emerald-200 hover:border-emerald-500',
-    // Industrial Clean Solar Panel Array
-    image: 'https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=800&auto=format&fit=crop',
+    // Local Image from /public/ directory
+    image: '/Solar.png',
     specs: [
       { label: 'Panels', value: 'Tier-1 Solar' },
       { label: 'Net-Metering', value: 'Support Included' },
