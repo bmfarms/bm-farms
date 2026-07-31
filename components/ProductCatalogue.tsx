@@ -31,7 +31,7 @@ const products = [
     badge: 'Best Seller',
     badgeColor: 'bg-blue-100 text-blue-900 border-blue-200',
     borderColor: 'border-blue-200 hover:border-blue-500',
-    // Commercial Fish Farm Ponds / Feeding
+    // REPLACED: Placeholder Diver -> Commercial Aquaculture / Pond Feeding setup
     image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'Crude Protein', value: '28% - 34%' },
@@ -49,7 +49,7 @@ const products = [
     badge: 'High Yield',
     badgeColor: 'bg-amber-100 text-amber-900 border-amber-200',
     borderColor: 'border-amber-200 hover:border-amber-500',
-    // Actual Poultry Chickens Farm
+    // REPLACED: Single Chicken Close-up -> Actual Broiler Poultry Farm Flock
     image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'FCR Ratio', value: 'Optimized' },
@@ -67,7 +67,7 @@ const products = [
     badge: '3600 Tons/Yr',
     badgeColor: 'bg-purple-100 text-purple-900 border-purple-200',
     borderColor: 'border-purple-200 hover:border-purple-500',
-    // Industrial Stacked Poly Bags / Storage Warehouse
+    // REPLACED: General Cargo Warehouse -> Industrial Stacked Woven Bags / Storage
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'GSM Range', value: '55 - 120 GSM' },
@@ -85,7 +85,7 @@ const products = [
     badge: 'Eco Friendly',
     badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-200',
     borderColor: 'border-emerald-200 hover:border-emerald-500',
-    // Large Commercial Solar Farm / Rooftop Array
+    // REPLACED: Distant Sky Shot -> Industrial Rooftop Solar Panels / Farm Array
     image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'Panels', value: 'Tier-1 Solar' },
