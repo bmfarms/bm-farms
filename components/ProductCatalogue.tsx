@@ -163,28 +163,27 @@ export default function ProductCatalogue() {
                 >
                   <div>
                     {/* Top Product Image Banner */}
-                    <div className="relative h-48 w-full overflow-hidden bg-gray-100">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+<div className="relative h-48 w-full overflow-hidden bg-gray-100">
+  <img
+    src={item.image}
+    alt={item.title}
+    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+  />
+  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
-                      {/* Top Badge */}
-                      <span className={`absolute top-4 right-4 text-[10px] font-extrabold px-3 py-1 rounded-full border shadow-sm ${item.badgeColor}`}>
-                        {item.badge}
-                      </span>
+  {/* Top Badge */}
+  <span className={`absolute top-4 right-4 text-[10px] font-extrabold px-3 py-1 rounded-full border shadow-sm ${item.badgeColor}`}>
+    {item.badge}
+  </span>
 
-                      {/* Floating Entity Icon Badge */}
-                      <div className="absolute bottom-4 left-4 p-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-md border border-white/60 text-emerald-800 flex items-center gap-2">
-                        <Icon className="w-4 h-4" />
-                        <span className="text-[11px] font-bold text-gray-800 tracking-wide uppercase">
-                          {item.entity}
-                        </span>
-                      </div>
-                    </div>
+  {/* Floating Entity Icon Badge */}
+  <div className="absolute bottom-4 left-4 p-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-md border border-white/60 text-emerald-800 flex items-center gap-2">
+    <Icon className="w-4 h-4" />
+    <span className="text-[11px] font-bold text-gray-800 tracking-wide uppercase">
+      {item.entity}
+    </span>
+  </div>
+</div>
 
                     {/* Card Body */}
                     <div className="p-6">
