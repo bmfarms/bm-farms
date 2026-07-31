@@ -31,8 +31,8 @@ const products = [
     badge: 'Best Seller',
     badgeColor: 'bg-blue-100 text-blue-900 border-blue-200',
     borderColor: 'border-blue-200 hover:border-blue-500',
-    // High-resolution photo of actual floating fish feed pellets / aquaculture
-    image: 'https://images.unsplash.com/photo-1535591273668-578e31182c4f?q=80&w=800&auto=format&fit=crop',
+    // Commercial Fish Farm Ponds / Feeding
+    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'Crude Protein', value: '28% - 34%' },
       { label: 'Pellet Size', value: '1.5mm - 6mm' },
@@ -49,8 +49,8 @@ const products = [
     badge: 'High Yield',
     badgeColor: 'bg-amber-100 text-amber-900 border-amber-200',
     borderColor: 'border-amber-200 hover:border-amber-500',
-    // Poultry feed / broiler farming picture
-    image: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=800&auto=format&fit=crop',
+    // Actual Poultry Chickens Farm
+    image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'FCR Ratio', value: 'Optimized' },
       { label: 'Nutrition', value: 'Vitamins & Minerals' },
@@ -67,8 +67,8 @@ const products = [
     badge: '3600 Tons/Yr',
     badgeColor: 'bg-purple-100 text-purple-900 border-purple-200',
     borderColor: 'border-purple-200 hover:border-purple-500',
-    // Industrial woven sacks / packaging stack picture
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop',
+    // Industrial Stacked Poly Bags / Storage Warehouse
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'GSM Range', value: '55 - 120 GSM' },
       { label: 'Protection', value: 'UV & Moisture Proof' },
@@ -85,8 +85,8 @@ const products = [
     badge: 'Eco Friendly',
     badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-200',
     borderColor: 'border-emerald-200 hover:border-emerald-500',
-    // Large commercial solar rooftop array picture
-    image: 'https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=800&auto=format&fit=crop',
+    // Large Commercial Solar Farm / Rooftop Array
+    image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'Panels', value: 'Tier-1 Solar' },
       { label: 'Net-Metering', value: 'Support Included' },
@@ -102,7 +102,6 @@ export default function ProductCatalogue() {
     ? products 
     : products.filter(p => p.category === activeCategory);
 
-  // UNIVERSAL RELIABLE WHATSAPP HANDLER
   const handleWhatsAppInquiry = (productName: string) => {
     const phoneNumber = '923006333064'; 
     const textMessage = encodeURIComponent(`Hello BM Farms Team, I am interested in getting details and a price quote for "${productName}". Please guide me.`);
