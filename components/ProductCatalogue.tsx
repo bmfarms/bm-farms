@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Fish, 
@@ -32,7 +31,8 @@ const products = [
     badge: 'Best Seller',
     badgeColor: 'bg-blue-100 text-blue-900 border-blue-200',
     borderColor: 'border-blue-200 hover:border-blue-500',
-    image: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop',
+    // High-resolution photo of actual floating fish feed pellets / aquaculture
+    image: 'https://images.unsplash.com/photo-1535591273668-578e31182c4f?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'Crude Protein', value: '28% - 34%' },
       { label: 'Pellet Size', value: '1.5mm - 6mm' },
@@ -49,7 +49,8 @@ const products = [
     badge: 'High Yield',
     badgeColor: 'bg-amber-100 text-amber-900 border-amber-200',
     borderColor: 'border-amber-200 hover:border-amber-500',
-    image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=800&auto=format&fit=crop',
+    // Poultry feed / broiler farming picture
+    image: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'FCR Ratio', value: 'Optimized' },
       { label: 'Nutrition', value: 'Vitamins & Minerals' },
@@ -66,7 +67,8 @@ const products = [
     badge: '3600 Tons/Yr',
     badgeColor: 'bg-purple-100 text-purple-900 border-purple-200',
     borderColor: 'border-purple-200 hover:border-purple-500',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop',
+    // Industrial woven sacks / packaging stack picture
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'GSM Range', value: '55 - 120 GSM' },
       { label: 'Protection', value: 'UV & Moisture Proof' },
@@ -83,7 +85,8 @@ const products = [
     badge: 'Eco Friendly',
     badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-200',
     borderColor: 'border-emerald-200 hover:border-emerald-500',
-    image: 'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=800&auto=format&fit=crop',
+    // Large commercial solar rooftop array picture
+    image: 'https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'Panels', value: 'Tier-1 Solar' },
       { label: 'Net-Metering', value: 'Support Included' },
@@ -101,14 +104,9 @@ export default function ProductCatalogue() {
 
   // UNIVERSAL RELIABLE WHATSAPP HANDLER
   const handleWhatsAppInquiry = (productName: string) => {
-    // International format without '+' or spaces
     const phoneNumber = '923006333064'; 
     const textMessage = encodeURIComponent(`Hello BM Farms Team, I am interested in getting details and a price quote for "${productName}". Please guide me.`);
-    
-    // Standard wa.me universal URL
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${textMessage}`;
-
-    // Direct location assignment avoids browser popup blockers on mobile
     window.location.href = whatsappUrl;
   };
 
@@ -163,27 +161,27 @@ export default function ProductCatalogue() {
                 >
                   <div>
                     {/* Top Product Image Banner */}
-<div className="relative h-48 w-full overflow-hidden bg-gray-100">
-  <img
-    src={item.image}
-    alt={item.title}
-    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-  />
-  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+                    <div className="relative h-48 w-full overflow-hidden bg-gray-100">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
-  {/* Top Badge */}
-  <span className={`absolute top-4 right-4 text-[10px] font-extrabold px-3 py-1 rounded-full border shadow-sm ${item.badgeColor}`}>
-    {item.badge}
-  </span>
+                      {/* Top Badge */}
+                      <span className={`absolute top-4 right-4 text-[10px] font-extrabold px-3 py-1 rounded-full border shadow-sm ${item.badgeColor}`}>
+                        {item.badge}
+                      </span>
 
-  {/* Floating Entity Icon Badge */}
-  <div className="absolute bottom-4 left-4 p-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-md border border-white/60 text-emerald-800 flex items-center gap-2">
-    <Icon className="w-4 h-4" />
-    <span className="text-[11px] font-bold text-gray-800 tracking-wide uppercase">
-      {item.entity}
-    </span>
-  </div>
-</div>
+                      {/* Floating Entity Icon Badge */}
+                      <div className="absolute bottom-4 left-4 p-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-md border border-white/60 text-emerald-800 flex items-center gap-2">
+                        <Icon className="w-4 h-4" />
+                        <span className="text-[11px] font-bold text-gray-800 tracking-wide uppercase">
+                          {item.entity}
+                        </span>
+                      </div>
+                    </div>
 
                     {/* Card Body */}
                     <div className="p-6">
