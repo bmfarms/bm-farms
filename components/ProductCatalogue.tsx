@@ -31,8 +31,8 @@ const products = [
     badge: 'Best Seller',
     badgeColor: 'bg-blue-100 text-blue-900 border-blue-200',
     borderColor: 'border-blue-200 hover:border-blue-500',
-    // Commercial Fish Farm Pond & Feeding Visual
-    image: 'https://images.unsplash.com/photo-1535591273668-578e31182c4f?q=80&w=800&auto=format&fit=crop',
+    // High Quality Commercial Fish Farming Feed Pellets / Aquaculture
+    image: 'https://images.unsplash.com/photo-1516683011827-468828892641?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'Crude Protein', value: '28% - 34%' },
       { label: 'Pellet Size', value: '1.5mm - 6mm' },
@@ -49,8 +49,8 @@ const products = [
     badge: 'High Yield',
     badgeColor: 'bg-amber-100 text-amber-900 border-amber-200',
     borderColor: 'border-amber-200 hover:border-amber-500',
-    // Poultry Farm Grains & Feed Granules
-    image: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=800&auto=format&fit=crop',
+    // Commercial Poultry Feed Grains & Formulations
+    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'FCR Ratio', value: 'Optimized' },
       { label: 'Nutrition', value: 'Vitamins & Minerals' },
@@ -67,8 +67,8 @@ const products = [
     badge: '3600 Tons/Yr',
     badgeColor: 'bg-purple-100 text-purple-900 border-purple-200',
     borderColor: 'border-purple-200 hover:border-purple-500',
-    // Woven Sack Fabric & Textile Texture
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop',
+    // Industrial Grain Sacks & Packaging Factory
+    image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'GSM Range', value: '55 - 120 GSM' },
       { label: 'Protection', value: 'UV & Moisture Proof' },
@@ -85,8 +85,8 @@ const products = [
     badge: 'Eco Friendly',
     badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-200',
     borderColor: 'border-emerald-200 hover:border-emerald-500',
-    // Industrial Rooftop Solar Panels Farm
-    image: 'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=800&auto=format&fit=crop',
+    // Industrial Clean Solar Panel Array
+    image: 'https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=800&auto=format&fit=crop',
     specs: [
       { label: 'Panels', value: 'Tier-1 Solar' },
       { label: 'Net-Metering', value: 'Support Included' },
