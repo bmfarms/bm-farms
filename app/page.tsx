@@ -26,23 +26,30 @@ export default function Home() {
         <ProductCatalogue />
       </FadeIn>
 
-      {/* 4. Industrial Capacities & Operational Divisions (Manufacturing Strength) */}
-      <FadeIn delay={0.3}>
-        <section className="py-16 bg-gray-100/70 border-t border-b border-gray-200/80">
-          <div className="text-center mb-8 max-w-3xl mx-auto px-4">
-            <span className="text-xs font-extrabold text-emerald-800 uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full">
-              Manufacturing & Infrastructure
-            </span>
-            <h2 className="text-3xl font-extrabold text-gray-900 mt-3">
-              Industrial Capacities & Capabilities
-            </h2>
-            <p className="text-gray-600 mt-2 text-sm sm:text-base">
-              Detailed breakdown of our operational divisions, production scale, and infrastructure.
-            </p>
-          </div>
-          <DivisionTabs />
-        </section>
-      </FadeIn>
+      {/* 4. Industrial Capacities & Operational Divisions */}
+<FadeIn delay={0.3}>
+  <section className="py-20 bg-gradient-to-br from-emerald-50 via-teal-50/60 to-emerald-100/50 border-t border-b border-emerald-100/80 relative overflow-hidden">
+    {/* Decorative Soft Background Glows */}
+    <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
+    <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-teal-200/40 rounded-full blur-3xl pointer-events-none" />
+
+    <div className="text-center mb-8 max-w-3xl mx-auto px-4 relative z-10">
+      <span className="text-xs font-extrabold text-emerald-900 uppercase tracking-widest bg-white/60 border border-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-sm">
+        Manufacturing & Infrastructure
+      </span>
+      <h2 className="text-3xl font-extrabold text-gray-900 mt-3 sm:text-4xl">
+        Industrial Capacities & Capabilities
+      </h2>
+      <p className="text-gray-700 mt-2 text-sm sm:text-base font-medium">
+        Detailed breakdown of our operational divisions, production scale, and infrastructure.
+      </p>
+    </div>
+
+    <div className="relative z-10">
+      <DivisionTabs />
+    </div>
+  </section>
+</FadeIn>
 
       {/* 5. Group Standards & Quality Assurance */}
       <FadeIn delay={0.4}>
