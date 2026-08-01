@@ -19,7 +19,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <header className="w-full sticky top-0 z-50 bg-white/40 backdrop-blur-xl border-b border-white/60 shadow-lg transition-all duration-300">
       
       {/* Mobile-Only Marquee Styling */}
       <style jsx>{`
@@ -39,8 +39,8 @@ export default function Navbar() {
         }
       `}</style>
 
-      {/* Top Bar for Contact Info */}
-      <div className="bg-emerald-900 text-white text-[11px] sm:text-xs py-2 px-3 sm:px-8 border-b border-emerald-800/50 overflow-hidden relative">
+      {/* Top Bar for Contact Info - Glass Translucent */}
+      <div className="bg-emerald-950/90 backdrop-blur-md text-white text-[11px] sm:text-xs py-2 px-3 sm:px-8 border-b border-white/10 overflow-hidden relative">
         <div className="max-w-7xl mx-auto flex sm:justify-between items-center">
           
           {/* Container: Mobile Marquee & Desktop Balanced Flex Layout */}
@@ -100,8 +100,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Navigation */}
-      <nav className="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex justify-between items-center">
+      {/* Main Navigation - Floating Glass Header Bar */}
+      <nav className="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex justify-between items-center">
         
         {/* Brand Logo */}
         <Link href="/" className="flex flex-col group">
@@ -113,24 +113,24 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-7 font-semibold text-gray-700 text-sm">
+        {/* Desktop Navigation Links (Frosted Glass Chips) */}
+        <div className="hidden md:flex items-center gap-2 bg-white/50 backdrop-blur-md p-1.5 rounded-2xl border border-white/80 shadow-sm font-semibold text-gray-800 text-xs sm:text-sm">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative py-1 transition-colors ${
-                  isActive ? 'text-emerald-800 font-bold' : 'hover:text-emerald-700'
+                className={`relative px-4 py-1.5 rounded-xl transition-all ${
+                  isActive ? 'text-white font-bold' : 'hover:text-emerald-900 hover:bg-white/40'
                 }`}
               >
                 {link.name}
                 {isActive && (
                   <motion.div
                     layoutId="navbarIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-700 rounded-full"
-                    transition={{ type: 'spring', duration: 0.4 }}
+                    className="absolute inset-0 bg-emerald-900 rounded-xl -z-10 shadow-md"
+                    transition={{ type: 'spring', duration: 0.4, bounce: 0.15 }}
                   />
                 )}
               </Link>
@@ -142,7 +142,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link 
             href="/contact" 
-            className="hidden sm:inline-flex bg-emerald-800 hover:bg-emerald-900 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5"
+            className="hidden sm:inline-flex bg-emerald-900 hover:bg-emerald-950 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-md border border-white/20 transition-all transform hover:scale-105 active:scale-95"
           >
             Get In Touch
           </Link>
@@ -150,15 +150,15 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+            className="md:hidden p-2 rounded-xl text-emerald-950 bg-white/60 backdrop-blur-md border border-white/80 shadow-sm hover:bg-white transition-colors"
             aria-label="Toggle Menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Mobile Drawer Navigation (Frosted Glass Panel) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -166,7 +166,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-white border-t border-gray-100 overflow-hidden shadow-lg"
+            className="md:hidden bg-white/80 backdrop-blur-2xl border-t border-white/80 overflow-hidden shadow-2xl"
           >
             <div className="px-4 pt-3 pb-6 space-y-2">
               {navLinks.map((link) => {
@@ -178,8 +178,8 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className={`block px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
                       isActive
-                        ? 'bg-emerald-50 text-emerald-800'
-                        : 'text-gray-700 hover:bg-gray-50'
+                        ? 'bg-emerald-900 text-white font-bold shadow-md'
+                        : 'text-emerald-950 hover:bg-white/60'
                     }`}
                   >
                     {link.name}
@@ -191,7 +191,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="block text-center w-full bg-emerald-800 hover:bg-emerald-900 text-white text-sm font-bold py-3 rounded-xl transition"
+                  className="block text-center w-full bg-emerald-900 hover:bg-emerald-950 text-white text-sm font-bold py-3 rounded-xl transition shadow-md"
                 >
                   Get In Touch
                 </Link>
