@@ -36,8 +36,12 @@ const pillars = [
 
 export default function DivisionsOverview() {
   return (
-    <section className="py-20 bg-gray-50/70 border-t border-gray-200/80 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+    <section className="py-20 bg-gradient-to-br from-emerald-50/60 via-teal-50/40 to-emerald-100/40 border-t border-emerald-100/80 relative overflow-hidden">
+      {/* Decorative Glass Background Glowing Orbs */}
+      <div className="absolute top-1/3 -left-24 w-96 h-96 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 -right-24 w-96 h-96 bg-teal-200/40 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
         
         {/* Section Header */}
         <motion.div 
@@ -47,18 +51,18 @@ export default function DivisionsOverview() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block px-3.5 py-1 bg-emerald-100 text-emerald-900 text-xs font-bold rounded-full uppercase tracking-wider mb-3">
+          <span className="inline-block px-3.5 py-1 bg-white/60 border border-white/80 backdrop-blur-md text-emerald-900 text-xs font-extrabold rounded-full uppercase tracking-wider mb-3 shadow-sm">
             Why Choose Star & Unique Group
           </span>
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl tracking-tight">
             Built on Quality, Innovation & Trust
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-gray-700 font-medium leading-relaxed">
             Leading Pakistan's agricultural transformation with sustainable industrial practices, high-grade formulations, and uncompromised standard operating procedures.
           </p>
         </motion.div>
 
-        {/* Pillars Grid */}
+        {/* Pillars Grid - Glassmorphism Style */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {pillars.map((item, index) => (
             <motion.div 
@@ -67,31 +71,34 @@ export default function DivisionsOverview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -4 }}
-              className="bg-white border border-gray-200/80 p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-emerald-300 transition-all flex flex-col justify-between group"
+              whileHover={{ y: -6 }}
+              className="bg-white/40 backdrop-blur-xl border border-white/80 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
             >
+              {/* Glass Reflection Lens */}
+              <div className="absolute -top-16 -left-16 w-36 h-36 bg-white/30 rounded-full blur-2xl pointer-events-none" />
+
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="p-3 bg-emerald-50 border border-emerald-100 rounded-2xl">
+                  <div className="p-3 bg-white/70 border border-white/90 rounded-2xl shadow-sm backdrop-blur-md">
                     {item.icon}
                   </div>
-                  <span className="text-[11px] font-extrabold text-emerald-800 uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
+                  <span className="text-[11px] font-extrabold text-emerald-900 uppercase tracking-wider bg-white/60 border border-white/80 backdrop-blur-md px-3 py-1 rounded-full shadow-sm">
                     {item.tag}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-900 leading-snug group-hover:text-emerald-900 transition-colors">
+                <h3 className="text-xl font-extrabold text-gray-900 leading-snug group-hover:text-emerald-950 transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-xs font-semibold text-gray-500 mt-1">
+                <p className="text-xs font-bold text-emerald-800 mt-1">
                   {item.subtitle}
                 </p>
-                <p className="mt-4 text-gray-600 leading-relaxed text-sm">
+                <p className="mt-4 text-gray-700 font-medium leading-relaxed text-sm">
                   {item.description}
                 </p>
               </div>
 
-              <div className="mt-8 pt-5 border-t border-gray-100 flex items-center gap-2 text-xs font-bold text-emerald-800">
+              <div className="mt-8 pt-5 border-t border-white/60 flex items-center gap-2 text-xs font-bold text-emerald-900">
                 <CheckCircle2 className="w-4 h-4 text-emerald-700" />
                 <span>Strict Quality Standard Guaranteed</span>
               </div>
