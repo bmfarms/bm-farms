@@ -51,15 +51,19 @@ const marqueeStats = [...stats, ...stats, ...stats];
 
 export default function Stats() {
   return (
-    <section className="py-12 bg-gray-50 border-b border-gray-100 overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+    <section className="py-12 bg-slate-950 border-b border-white/10 overflow-hidden relative">
+      
+      {/* Decorative Ambient Glass Orbs */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
         
         {/* Section Heading */}
         <div className="text-center mb-8">
-          <span className="text-xs font-bold text-emerald-800 uppercase tracking-widest bg-emerald-100/80 px-3 py-1 rounded-full border border-emerald-200">
+          <span className="text-xs font-bold text-emerald-300 uppercase tracking-widest bg-white/10 px-4 py-1.5 rounded-full border border-white/20 backdrop-blur-xl shadow-lg">
             Our Key Milestones
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-4 drop-shadow-md">
             Impact in Numbers
           </h2>
         </div>
@@ -87,10 +91,11 @@ export default function Stats() {
       `}</style>
 
       {/* Infinite Continuous Slider Container */}
-      <div className="relative w-full overflow-hidden flex py-2 select-none touch-pan-y">
-        {/* Edge Gradients */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
+      <div className="relative w-full overflow-hidden flex py-4 select-none touch-pan-y z-10">
+        
+        {/* Edge Gradients for Dark Theme */}
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-20 pointer-events-none" />
 
         <div className="animate-marquee gap-6">
           {marqueeStats.map((item, index) => {
@@ -99,7 +104,7 @@ export default function Stats() {
             return (
               <div
                 key={index}
-                className="w-64 sm:w-72 shrink-0 group flex flex-col justify-between rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all duration-300 overflow-hidden cursor-pointer transform-gpu"
+                className="w-64 sm:w-72 shrink-0 group flex flex-col justify-between rounded-2xl bg-white/10 backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-emerald-400/50 hover:bg-white/15 transition-all duration-300 overflow-hidden cursor-pointer transform-gpu"
                 style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 {/* Top Image Banner */}
@@ -108,25 +113,26 @@ export default function Stats() {
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 sm:group-hover:scale-110"
                     style={{ backgroundImage: `url(${item.bgImage})` }}
                   />
-                  <div className="absolute inset-0 bg-black/20 sm:group-hover:bg-black/10 transition-colors" />
+                  {/* Darker overlay for better contrast in dark theme */}
+                  <div className="absolute inset-0 bg-black/40 sm:group-hover:bg-black/20 transition-colors" />
                   
                   {/* Floating Icon Badge */}
-                  <div className="absolute top-3 left-3 p-2 bg-white/95 backdrop-blur-md text-emerald-800 rounded-xl border border-white/60 shadow-md">
+                  <div className="absolute top-3 left-3 p-2 bg-slate-950/60 backdrop-blur-md text-emerald-400 rounded-xl border border-white/20 shadow-lg">
                     <Icon className="w-4 h-4" />
                   </div>
                 </div>
 
                 {/* Compact Content Area */}
-                <div className="p-3.5 text-center flex-1 flex flex-col justify-center bg-white">
-                  <div className="text-2xl font-black text-emerald-900 tracking-tight leading-none">
+                <div className="p-4 text-center flex-1 flex flex-col justify-center bg-transparent border-t border-white/10">
+                  <div className="text-2xl font-black text-white tracking-tight leading-none drop-shadow-sm">
                     <Counter end={item.numericValue} suffix={item.suffix} />
                   </div>
 
-                  <span className="text-xs font-bold text-gray-900 mt-1 leading-tight">
+                  <span className="text-xs font-bold text-emerald-300 mt-2 leading-tight">
                     {item.label}
                   </span>
 
-                  <span className="text-[10px] text-gray-500 font-medium mt-0.5">
+                  <span className="text-[10px] text-slate-400 font-medium mt-1">
                     {item.subtext}
                   </span>
                 </div>
