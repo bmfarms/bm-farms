@@ -2,9 +2,8 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, CheckCircle2, MessageCircle } from 'lucide-react';
+import { ArrowUpRight, MessageCircle } from 'lucide-react';
 
 const categories = [
   { id: 'all', label: 'All Products' },
@@ -76,12 +75,12 @@ export default function ProductCatalogue() {
     : products.filter((p) => p.category === activeCategory);
 
   return (
-    <section className="py-12 relative overflow-hidden">
+    <section className="py-8 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <span className="text-xs font-bold text-emerald-900 uppercase tracking-widest bg-emerald-100 border border-emerald-300 px-4 py-1.5 rounded-full shadow-sm">
+          <span className="text-xs font-extrabold text-emerald-900 uppercase tracking-widest bg-emerald-100/90 border border-emerald-300/80 px-4 py-1.5 rounded-full shadow-sm">
             Commercial Offerings
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 tracking-tight">
@@ -93,15 +92,15 @@ export default function ProductCatalogue() {
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm border ${
                 activeCategory === cat.id
-                  ? 'bg-emerald-900 text-white border-emerald-900 shadow-md'
-                  : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-emerald-800 text-white border-emerald-800 shadow-md'
+                  : 'bg-white/80 text-slate-700 border-slate-300 hover:bg-white hover:text-slate-900'
               }`}
             >
               {cat.label}
@@ -120,18 +119,17 @@ export default function ProductCatalogue() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
                 key={product.id}
-                className="bg-white/80 backdrop-blur-md border border-slate-200/80 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl hover:border-emerald-300 transition-all flex flex-col justify-between group"
+                className="bg-white/60 backdrop-blur-2xl border border-white/80 rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] hover:border-emerald-400 transition-all flex flex-col justify-between group"
               >
                 <div>
                   {/* Image Header */}
-                  <div className="relative h-56 w-full overflow-hidden bg-slate-100">
-                    <Image
+                  <div className="relative h-56 w-full overflow-hidden bg-slate-200">
+                    <img
                       src={product.image}
                       alt={product.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-4 right-4 bg-emerald-900 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
+                    <div className="absolute top-4 right-4 bg-emerald-800 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
                       {product.badge}
                     </div>
                   </div>
@@ -146,13 +144,13 @@ export default function ProductCatalogue() {
                     </p>
 
                     {/* Specifications */}
-                    <div className="grid grid-cols-3 gap-2 mt-6 pt-4 border-t border-slate-100">
+                    <div className="grid grid-cols-3 gap-2 mt-6 pt-4 border-t border-slate-200/60">
                       {product.specs.map((spec, i) => (
-                        <div key={i} className="bg-slate-50 border border-slate-200/60 p-2.5 rounded-xl text-center">
-                          <span className="text-[10px] text-slate-500 font-semibold uppercase block">
+                        <div key={i} className="bg-white/80 border border-slate-200/80 p-2.5 rounded-xl text-center shadow-xs">
+                          <span className="text-[10px] text-slate-500 font-bold uppercase block">
                             {spec.label}
                           </span>
-                          <span className="text-xs font-bold text-slate-800 mt-0.5 block">
+                          <span className="text-xs font-bold text-slate-900 mt-0.5 block">
                             {spec.value}
                           </span>
                         </div>
@@ -165,7 +163,7 @@ export default function ProductCatalogue() {
                 <div className="p-6 pt-0 flex items-center gap-3">
                   <Link
                     href="/products"
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-3 rounded-xl transition-all border border-slate-200"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-200/80 hover:bg-slate-300/80 text-slate-800 text-xs font-bold py-3 rounded-xl transition-all border border-slate-300/60"
                   >
                     <span>Specs Sheet</span>
                     <ArrowUpRight className="w-4 h-4" />
@@ -175,7 +173,7 @@ export default function ProductCatalogue() {
                     href="https://wa.me/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold py-3 rounded-xl transition-all shadow-md"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold py-3 rounded-xl transition-all shadow-md"
                   >
                     <MessageCircle className="w-4 h-4" />
                     <span>Inquire via WhatsApp</span>
