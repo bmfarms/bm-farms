@@ -1,190 +1,499 @@
-'use client';
+('use client');
+
+
 
 import { useState } from 'react';
+
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import { ArrowUpRight, MessageCircle } from 'lucide-react';
+
+import {
+
+  Fish,
+
+  Bird,
+
+  Package,
+
+  Sun,
+
+  MessageSquare,
+
+  ArrowRight,
+
+  FileText,
+
+  Sparkles
+
+} from 'lucide-react';
+
+
 
 const categories = [
+
   { id: 'all', label: 'All Products' },
-  { id: 'feed', label: 'Aqua & Broiler Feed' },
+
+  { id: 'feed', label: 'Feed Solutions' },
+
   { id: 'packaging', label: 'Industrial Packaging' },
-  { id: 'energy', label: 'Solar Energy' },
+
+  { id: 'energy', label: 'Clean Energy' },
+
 ];
+
+
 
 const products = [
+
   {
+
     id: 1,
+
+    category: 'feed',
+
     title: 'Star Floating Fish Feed',
-    category: 'feed',
-    image: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=800&auto=format&fit=crop',
-    description: 'High-protein, highly digestible floating feed engineered for maximum growth rate (FCR) in Tilapia, Pangasius, and Carp farming.',
+
+    entity: 'Star Floating Feed Pvt Ltd',
+
+    icon: Fish,
+
+    description: 'High-protein, highly digestible floating extruded feed designed for maximum Growth & FCR in Tilapia, Pangasius, and Carp farming.',
+
     badge: 'Best Seller',
+
+    image: '/Fish Feed.png',
+
     specs: [
-      { label: 'Crude Protein', value: '28% - 32%' },
-      { label: 'Pellet Size', value: '2mm - 6mm' },
-      { label: 'Packaging', value: '40kg PP Bags' },
+
+      { label: 'Crude Protein', value: '28% - 34%' },
+
+      { label: 'Pellet Size', value: '1.5mm - 6mm' },
+
+      { label: 'Packaging', value: '20kg / 40kg Bags' },
+
     ],
+
   },
+
   {
+
     id: 2,
-    title: 'Unique Super Broiler Feed',
+
     category: 'feed',
-    image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=800&auto=format&fit=crop',
-    description: 'Scientifically balanced starter, grower, and finisher rations for controlled environment poultry broiler farming.',
-    badge: 'High FCR',
+
+    title: 'Unique Super Broiler Feed',
+
+    entity: 'Unique Super Feed Pvt Ltd',
+
+    icon: Bird,
+
+    description: 'Scientifically formulated starter, grower, and finisher rations for controlled environment broiler farming.',
+
+    badge: 'High Yield',
+
+    image: '/Broiler Feed.png',
+
     specs: [
-      { label: 'Crude Protein', value: '20% - 23%' },
-      { label: 'Form', value: 'Crumble / Pellet' },
-      { label: 'Packaging', value: '50kg Bags' },
+
+      { label: 'FCR Ratio', value: 'Optimized' },
+
+      { label: 'Nutrition', value: 'Vitamins & Minerals' },
+
+      { label: 'Quality', value: 'Aflatoxin Tested' },
+
     ],
+
   },
+
   {
+
     id: 3,
-    title: 'Star Polypropylene (PP) Woven Bags',
+
     category: 'packaging',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop',
-    description: 'Heavy-duty PP woven bags engineered for feed, grain, fertilizer, and chemical storage with high tensile strength.',
-    badge: 'Heavy Duty',
+
+    title: 'Star Polypropylene (PP) Woven Bags',
+
+    entity: 'Star Polypropylene Pvt Ltd',
+
+    icon: Package,
+
+    description: 'Heavy-duty PP woven sacks engineered for feed, grain, fertilizer, and chemical storage with high tensile strength.',
+
+    badge: '3600 Tons/Yr',
+
+    image: '/Polypropylene Bags.png',
+
     specs: [
-      { label: 'Capacity', value: '10kg - 100kg' },
-      { label: 'UV Protection', value: 'Custom Treated' },
-      { label: 'Printing', value: 'BOPP / Flexo' },
+
+      { label: 'GSM Range', value: '55 - 120 GSM' },
+
+      { label: 'Protection', value: 'UV & Moisture Proof' },
+
+      { label: 'Printing', value: 'Flexo & BOPP' },
+
     ],
+
   },
+
   {
+
     id: 4,
-    title: 'Commercial Solar PV Systems',
+
     category: 'energy',
-    image: 'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=800&auto=format&fit=crop',
-    description: 'Turnkey industrial and agricultural solar energy solutions, grid-tied net-metering, and high-efficiency inverter installations.',
-    badge: 'Clean Energy',
+
+    title: 'Commercial Solar PV Systems',
+
+    entity: 'Star Enterprises',
+
+    icon: Sun,
+
+    description: 'Turnkey industrial and agricultural solar energy solutions, net-metering setup, and high-efficiency inverter integrations.',
+
+    badge: 'Eco Friendly',
+
+    image: '/Solar.png',
+
     specs: [
-      { label: 'Panel Grade', value: 'Tier-1 High Efficiency' },
-      { label: 'Warranty', value: '25 Years Performance' },
-      { label: 'Integration', value: 'Net-Metering' },
+
+      { label: 'Panels', value: 'Tier-1 Solar' },
+
+      { label: 'Net-Metering', value: 'Support Included' },
+
+      { label: 'Capacity', value: '50 MW Industrial' },
+
     ],
+
   },
+
 ];
 
+
+
 export default function ProductCatalogue() {
+
   const [activeCategory, setActiveCategory] = useState('all');
 
+
+
   const filteredProducts = activeCategory === 'all'
+
     ? products
-    : products.filter((p) => p.category === activeCategory);
+
+    : products.filter(p => p.category === activeCategory);
+
+
+
+  const handleWhatsAppInquiry = (productName: string) => {
+
+    const phoneNumber = '923006333064';
+
+    const textMessage = encodeURIComponent(`Hello BM Farms Team, I am interested in getting details and a price quote for "${productName}". Please guide me.`);
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${textMessage}`;
+
+    window.location.href = whatsappUrl;
+
+  };
+
+
 
   return (
-    <section className="py-8 relative">
+
+    <section className="py-20 bg-gradient-to-br from-emerald-50/60 via-teal-50/40 to-emerald-100/40 border-b border-emerald-100/80 relative overflow-hidden">
+
+      {/* Decorative Glass Background Orbs */}
+
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="absolute bottom-10 -right-20 w-96 h-96 bg-teal-200/30 rounded-full blur-3xl pointer-events-none" />
+
+
+
       <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
-        
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <span className="text-xs font-extrabold text-emerald-900 uppercase tracking-widest bg-emerald-100/90 border border-emerald-300/80 px-4 py-1.5 rounded-full shadow-sm">
-            Commercial Offerings
+
+       
+
+        {/* Section Header */}
+
+        <div className="text-center max-w-3xl mx-auto mb-12">
+
+          <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-900 uppercase tracking-widest bg-white/60 border border-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-sm">
+
+            <Sparkles className="w-3.5 h-3.5 text-emerald-700" /> Commercial Offerings
+
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 tracking-tight">
+
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-3 tracking-tight">
+
             Commercial Product Catalogue
+
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base mt-2 font-medium">
-            High-grade feed formulations, industrial packaging solutions, and clean energy setups engineered for maximum efficiency.
+
+          <p className="text-gray-700 text-sm sm:text-base mt-3 leading-relaxed font-medium">
+
+            High-grade feed formulations, industrial packaging solutions, and clean energy setups manufactured for maximum efficiency.
+
           </p>
-        </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm border ${
-                activeCategory === cat.id
-                  ? 'bg-emerald-800 text-white border-emerald-800 shadow-md'
-                  : 'bg-white/80 text-slate-700 border-slate-300 hover:bg-white hover:text-slate-900'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
 
-        {/* Product Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-          <AnimatePresence>
-            {filteredProducts.map((product) => (
-              <motion.div
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                key={product.id}
-                className="bg-white/60 backdrop-blur-2xl border border-white/80 rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] hover:border-emerald-400 transition-all flex flex-col justify-between group"
+
+          {/* Glassmorphic Category Filter Tabs */}
+
+          <div className="inline-flex flex-wrap justify-center gap-2 mt-8 bg-white/40 backdrop-blur-md p-2 rounded-2xl border border-white/70 shadow-lg">
+
+            {categories.map((cat) => (
+
+              <button
+
+                key={cat.id}
+
+                onClick={() => setActiveCategory(cat.id)}
+
+                className={`relative px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all z-10 ${
+
+                  activeCategory === cat.id
+
+                    ? 'text-white'
+
+                    : 'text-emerald-950 hover:text-emerald-700'
+
+                }`}
+
               >
-                <div>
-                  {/* Image Header */}
-                  <div className="relative h-56 w-full overflow-hidden bg-slate-200">
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 right-4 bg-emerald-800 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
-                      {product.badge}
-                    </div>
-                  </div>
 
-                  {/* Body */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-800 transition-colors">
-                      {product.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 mt-2 font-medium leading-relaxed">
-                      {product.description}
-                    </p>
+                {activeCategory === cat.id && (
 
-                    {/* Specifications */}
-                    <div className="grid grid-cols-3 gap-2 mt-6 pt-4 border-t border-slate-200/60">
-                      {product.specs.map((spec, i) => (
-                        <div key={i} className="bg-white/80 border border-slate-200/80 p-2.5 rounded-xl text-center shadow-xs">
-                          <span className="text-[10px] text-slate-500 font-bold uppercase block">
-                            {spec.label}
-                          </span>
-                          <span className="text-xs font-bold text-slate-900 mt-0.5 block">
-                            {spec.value}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                  <motion.div
 
-                {/* Footer Actions */}
-                <div className="p-6 pt-0 flex items-center gap-3">
-                  <Link
-                    href="/products"
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-200/80 hover:bg-slate-300/80 text-slate-800 text-xs font-bold py-3 rounded-xl transition-all border border-slate-300/60"
-                  >
-                    <span>Specs Sheet</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
+                    layoutId="activeCategoryPill"
 
-                  <a
-                    href="https://wa.me/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold py-3 rounded-xl transition-all shadow-md"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>Inquire via WhatsApp</span>
-                  </a>
-                </div>
-              </motion.div>
+                    className="absolute inset-0 bg-emerald-900 rounded-xl -z-10 shadow-md"
+
+                    transition={{ type: 'spring', duration: 0.5, bounce: 0.15 }}
+
+                  />
+
+                )}
+
+                {cat.label}
+
+              </button>
+
             ))}
+
+          </div>
+
+        </div>
+
+
+
+        {/* Product Cards Grid - Glassmorphism Style */}
+
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <AnimatePresence mode="popLayout">
+
+            {filteredProducts.map((item) => {
+
+              const Icon = item.icon;
+
+              return (
+
+                <motion.div
+
+                  key={item.id}
+
+                  layout
+
+                  initial={{ opacity: 0, scale: 0.95 }}
+
+                  animate={{ opacity: 1, scale: 1 }}
+
+                  exit={{ opacity: 0, scale: 0.95 }}
+
+                  transition={{ duration: 0.3 }}
+
+                  className="bg-white/40 backdrop-blur-xl border border-white/80 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden group relative"
+
+                >
+
+                  {/* Glass Reflection Highlight */}
+
+                  <div className="absolute -top-20 -left-20 w-40 h-40 bg-white/30 rounded-full blur-2xl pointer-events-none" />
+
+
+
+                  <div>
+
+                    {/* Top Product Image Banner */}
+
+                    <div className="relative h-52 w-full overflow-hidden bg-white/50 border-b border-white/60">
+
+                      <img
+
+                        src={item.image}
+
+                        alt={item.title}
+
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+
+                      />
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+
+
+                      {/* Top Badge (Glass Pill) */}
+
+                      <span className="absolute top-4 right-4 text-[10px] font-extrabold px-3 py-1 rounded-full bg-emerald-900/90 backdrop-blur-md text-white border border-white/30 shadow-md uppercase tracking-wider">
+
+                        {item.badge}
+
+                      </span>
+
+
+
+                      {/* Floating Entity Icon Badge */}
+
+                      <div className="absolute bottom-4 left-4 p-2 px-3 bg-white/70 backdrop-blur-md rounded-2xl shadow-lg border border-white/80 text-emerald-950 flex items-center gap-2">
+
+                        <Icon className="w-4 h-4 text-emerald-800" />
+
+                        <span className="text-[11px] font-bold tracking-wide uppercase">
+
+                          {item.entity}
+
+                        </span>
+
+                      </div>
+
+                    </div>
+
+
+
+                    {/* Card Body */}
+
+                    <div className="p-6">
+
+                      <h3 className="text-xl font-extrabold text-gray-900 leading-snug group-hover:text-emerald-950 transition-colors">
+
+                        {item.title}
+
+                      </h3>
+
+
+
+                      <p className="mt-2 text-xs sm:text-sm text-gray-700 leading-relaxed font-medium">
+
+                        {item.description}
+
+                      </p>
+
+
+
+                      {/* Specifications Badges Grid (Frosted Glass Chips) */}
+
+                      <div className="mt-6 pt-5 border-t border-white/60">
+
+                        <span className="text-[10px] font-extrabold text-emerald-900 uppercase tracking-wider block mb-3">
+
+                          Key Specifications
+
+                        </span>
+
+
+
+                        <div className="grid grid-cols-3 gap-2">
+
+                          {item.specs.map((spec, idx) => (
+
+                            <div
+
+                              key={idx}
+
+                              className="bg-white/50 backdrop-blur-md border border-white/80 p-2.5 rounded-2xl text-center shadow-sm"
+
+                            >
+
+                              <span className="text-[10px] text-emerald-800 font-bold block truncate">
+
+                                {spec.label}
+
+                              </span>
+
+                              <span className="text-xs font-extrabold text-emerald-950 mt-0.5 block truncate">
+
+                                {spec.value}
+
+                              </span>
+
+                            </div>
+
+                          ))}
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+
+
+                  {/* Action Buttons Container */}
+
+                  <div className="p-6 pt-0 grid grid-cols-1 sm:grid-cols-2 gap-3 z-10">
+
+                    <button
+
+                      onClick={() => alert(`Technical specs worksheet for ${item.title} requested.`)}
+
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-white/80 bg-white/50 hover:bg-white backdrop-blur-md text-gray-800 text-xs font-bold transition-all shadow-sm hover:shadow"
+
+                    >
+
+                      <FileText className="w-4 h-4 text-emerald-800" /> Specs Sheet
+
+                    </button>
+
+
+
+                    <button
+
+                      onClick={() => handleWhatsAppInquiry(item.title)}
+
+                      className="w-full inline-flex items-center justify-center gap-2 bg-emerald-900 hover:bg-emerald-950 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-all shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+
+                    >
+
+                      <MessageSquare className="w-4 h-4" />
+
+                      <span>Inquire via WhatsApp</span>
+
+                      <ArrowRight className="w-3.5 h-3.5 opacity-80" />
+
+                    </button>
+
+                  </div>
+
+
+
+                </motion.div>
+
+              );
+
+            })}
+
           </AnimatePresence>
+
         </motion.div>
 
+
+
       </div>
+
     </section>
+
   );
+
 }
