@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "BM Farms",
   description: "Sustainable farming, modern agro solutions, and clean energy.",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
