@@ -50,8 +50,8 @@ export default function DivisionTabs() {
 
   return (
     <div className="max-w-5xl mx-auto py-4 px-4">
-      {/* Glassmorphic Tab Container */}
-      <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 bg-white/5 backdrop-blur-xl p-2 rounded-2xl border border-white/10 shadow-2xl">
+      {/* Light Tab Container */}
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 bg-white/70 backdrop-blur-md p-2 rounded-2xl border border-slate-200 shadow-sm">
         {divisions.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -61,28 +61,25 @@ export default function DivisionTabs() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`relative px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2.5 z-10 ${
-                isActive ? 'text-white' : 'text-slate-300 hover:text-white'
+                isActive ? 'text-white' : 'text-slate-700 hover:text-emerald-800'
               }`}
             >
               {isActive && (
                 <motion.div
                   layoutId="activeTabPill"
-                  className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl -z-10 shadow-lg border border-emerald-400/30"
+                  className="absolute inset-0 bg-emerald-900 rounded-xl -z-10 shadow-md"
                   transition={{ type: 'spring', duration: 0.5, bounce: 0.15 }}
                 />
               )}
-              <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-emerald-400'}`} />
+              <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-emerald-800'}`} />
               <span>{tab.title}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Glassmorphic Card (Frosted Dark Glass Look) */}
-      <div className="bg-white/10 backdrop-blur-2xl p-6 sm:p-10 rounded-3xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] min-h-[260px] relative overflow-hidden">
-        {/* Subtle Ambient Glowing Orb */}
-        <div className="absolute -top-24 -left-24 w-60 h-60 bg-emerald-500/20 rounded-full blur-[100px] pointer-events-none" />
-
+      {/* Light Card */}
+      <div className="bg-white/80 backdrop-blur-xl p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-xl min-h-[260px] relative overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentTab.id}
@@ -94,37 +91,37 @@ export default function DivisionTabs() {
           >
             <div className="space-y-4 max-w-2xl">
               <div className="flex items-center gap-3">
-                <span className="p-3 bg-emerald-500/20 border border-emerald-400/30 shadow-sm rounded-2xl text-emerald-300 backdrop-blur-md">
+                <span className="p-3 bg-emerald-50 border border-emerald-200 shadow-sm rounded-2xl text-emerald-900">
                   <currentTab.icon className="w-6 h-6" />
                 </span>
                 <div>
-                  <h3 className="text-2xl font-extrabold text-white tracking-tight">{currentTab.title}</h3>
-                  <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">
+                  <h3 className="text-2xl font-extrabold text-slate-900">{currentTab.title}</h3>
+                  <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider">
                     Infrastructure & Capacity Overview
                   </span>
                 </div>
               </div>
 
-              <p className="text-slate-200 leading-relaxed text-sm sm:text-base font-normal">
+              <p className="text-slate-700 leading-relaxed text-sm sm:text-base font-medium">
                 {currentTab.desc}
               </p>
 
-              {/* Technical Highlights Badges - Glass Chips */}
+              {/* Technical Highlights Badges */}
               <div className="flex flex-wrap gap-2 pt-1">
                 {currentTab.highlights.map((item, idx) => (
                   <span 
                     key={idx} 
-                    className="inline-flex items-center gap-1.5 bg-white/5 backdrop-blur-md border border-white/10 text-emerald-200 font-semibold px-3 py-1.5 rounded-xl text-xs shadow-sm"
+                    className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 text-slate-800 font-bold px-3 py-1.5 rounded-xl text-xs shadow-sm"
                   >
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
                     {item}
                   </span>
                 ))}
               </div>
 
               <div className="pt-2">
-                <div className="inline-flex items-center gap-2 bg-emerald-950/60 backdrop-blur-md border border-emerald-500/30 text-emerald-300 font-extrabold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-inner">
-                  <Zap className="w-4 h-4 text-emerald-400" />
+                <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-900 font-extrabold px-4 py-2 rounded-xl text-xs sm:text-sm">
+                  <Zap className="w-4 h-4 text-emerald-700" />
                   <span>Plant Operational Capacity: {currentTab.stats}</span>
                 </div>
               </div>
@@ -133,7 +130,7 @@ export default function DivisionTabs() {
             <div className="shrink-0 w-full lg:w-auto">
               <Link
                 href={currentTab.link}
-                className="inline-flex w-full lg:w-auto items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold px-6 py-3.5 rounded-2xl transition text-sm shadow-lg hover:shadow-emerald-900/50 hover:scale-[1.02] active:scale-[0.98] border border-emerald-400/30"
+                className="inline-flex w-full lg:w-auto items-center justify-center gap-2 bg-emerald-900 hover:bg-emerald-800 text-white font-bold px-6 py-3.5 rounded-2xl transition text-sm shadow-md hover:shadow-lg"
               >
                 <span>Operational Specifications</span>
                 <ArrowRight className="w-4 h-4" />
