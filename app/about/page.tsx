@@ -12,16 +12,12 @@ export default function AboutPage() {
   const [isTouched, setIsTouched] = useState(false);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-50/40 flex flex-col justify-between overflow-hidden relative">
-      
-      {/* Background Ambient Glowing Orbs */}
-      <div className="absolute top-20 -left-20 w-96 h-96 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 -right-20 w-96 h-96 bg-teal-200/40 rounded-full blur-3xl pointer-events-none" />
+    <main className="min-h-screen bg-gray-50 flex flex-col justify-between overflow-hidden relative">
 
       <div>
         <Navbar />
 
-        {/* Dynamic Page Header - Frosted Translucent Header */}
+        {/* Dynamic Page Header - Dark Green Hero (kept as-is) */}
         <section className="relative bg-emerald-950/90 backdrop-blur-xl text-white py-20 px-4 sm:px-8 border-b border-white/10 shadow-lg">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-emerald-500/20 via-transparent to-transparent pointer-events-none" />
           <motion.div 
@@ -71,7 +67,7 @@ export default function AboutPage() {
                   <motion.div 
                     key={idx}
                     whileHover={{ x: 5 }}
-                    className="flex items-start gap-3 p-3 rounded-2xl bg-white/40 border border-white/80 backdrop-blur-md shadow-sm hover:shadow-md hover:bg-white/60 transition-all"
+                    className="flex items-start gap-3 p-3 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all"
                   >
                     <CheckCircle2 className="text-emerald-700 w-5 h-5 shrink-0 mt-0.5" />
                     <span className="text-sm font-semibold text-gray-800">{text}</span>
@@ -80,7 +76,7 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* Vision Box - Glass Card */}
+            {/* Vision Box - Solid White Card */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -88,21 +84,21 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="bg-white/40 backdrop-blur-xl p-8 sm:p-10 rounded-3xl border border-white/80 shadow-xl space-y-6 relative overflow-hidden">
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-300/30 rounded-full blur-2xl pointer-events-none" />
+              <div className="bg-white p-8 sm:p-10 rounded-3xl border border-gray-100 shadow-xl space-y-6 relative overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-100/60 rounded-full blur-2xl pointer-events-none" />
                 
-                <div className="flex items-center gap-3 text-emerald-950 font-bold text-2xl">
-                  <div className="p-2.5 bg-white/70 border border-white/90 rounded-2xl shadow-sm backdrop-blur-md text-emerald-800">
+                <div className="flex items-center gap-3 text-emerald-950 font-bold text-2xl relative z-10">
+                  <div className="p-2.5 bg-emerald-50 border border-emerald-100 rounded-2xl shadow-sm text-emerald-800">
                     <Target className="w-6 h-6" />
                   </div>
                   <h3>Our Vision</h3>
                 </div>
                 
-                <blockquote className="text-gray-800 leading-relaxed text-base sm:text-lg italic font-medium border-l-4 border-emerald-600 pl-4 py-1">
+                <blockquote className="text-gray-800 leading-relaxed text-base sm:text-lg italic font-medium border-l-4 border-emerald-600 pl-4 py-1 relative z-10">
                   "To lead Pakistan's agricultural, feed, poultry, aquaculture, packaging, and energy sectors through innovation, sustainability, high-quality products, and a commitment to national development."
                 </blockquote>
 
-                <div className="pt-4 grid grid-cols-2 gap-4 border-t border-white/60">
+                <div className="pt-4 grid grid-cols-2 gap-4 border-t border-gray-100 relative z-10">
                   <div className="flex items-center gap-2 text-xs font-bold text-gray-700">
                     <Award className="w-4 h-4 text-emerald-700" /> 100% Quality Assurance
                   </div>
@@ -116,8 +112,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Leadership Section - Frosted Card Style */}
-        <section className="py-20 bg-white/30 backdrop-blur-md border-t border-white/60 px-4 sm:px-8 relative z-10">
+        {/* Leadership Section - Solid White Card Style */}
+        <section className="py-20 bg-white border-t border-gray-100 px-4 sm:px-8 relative z-10">
           <div className="max-w-7xl mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -125,20 +121,20 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <span className="inline-block px-3 py-1 bg-white/60 border border-white/80 backdrop-blur-md text-emerald-800 text-xs font-extrabold rounded-full uppercase tracking-wider mb-2 shadow-sm">
+              <span className="inline-block px-3 py-1 bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-extrabold rounded-full uppercase tracking-wider mb-2 shadow-sm">
                 Executive Leadership
               </span>
               <h2 className="text-3xl font-extrabold text-gray-900 mt-1">Guiding Our Success</h2>
             </motion.div>
             
-            {/* Interactive Card (Glassmorphic Outer Glow) */}
+            {/* Interactive Card */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
               onClick={() => setIsTouched(!isTouched)}
-              className={`max-w-sm mx-auto h-[420px] rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 relative cursor-pointer border border-white/80 group select-none ${
+              className={`max-w-sm mx-auto h-[420px] rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 relative cursor-pointer border border-gray-100 group select-none ${
                 isTouched ? 'ring-4 ring-emerald-500/30' : ''
               }`}
             >
