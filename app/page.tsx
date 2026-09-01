@@ -8,8 +8,8 @@ import WhatsAppWidget from '@/components/WhatsAppWidget';
 
 export default function Home() {
 return (
-<main className="min-h-screen bg-gray-50 overflow-x-hidden">
-
+<main className="min-h-screen bg-gray-50 overflow-x-clip">
+    
 {/* 1. Hero Section - Introduction */}
 <Hero />
 
