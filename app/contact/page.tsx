@@ -45,7 +45,7 @@ try {
   }
 } catch (error) {
   console.error(error); // ✅ error ko console mein log karein
-  setStatusMessage({ type: 'error', text: 'Paigham bhejne mein masla hua. Baraye meharbani dobara koshish karein.' });
+  setStatusMessage({ type: 'error', text: 'Message submission failed. Please try again or contact us directly via phone or email.' });
 } finally {
   setLoading(false);
 }}
