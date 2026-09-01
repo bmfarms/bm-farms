@@ -48,7 +48,7 @@ try {
   setStatusMessage({ type: 'error', text: 'Paigham bhejne mein masla hua. Baraye meharbani dobara koshish karein.' });
 } finally {
   setLoading(false);
-}
+}}
 
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col justify-between overflow-hidden">
