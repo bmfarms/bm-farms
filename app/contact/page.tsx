@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -29,29 +27,32 @@ export default function ContactPage() {
 
     const scriptUrl = 'https://script.google.com/macros/s/AKfycbwFIVdV10RK5YvC8acR0a6Ia0or8qRzec2QjOMic_LHIp0Q26PJCn_c3opVo-8cQrQByg/exec';
 
-    try {
-      await fetch(scriptUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+try {
+  const response = await fetch(scriptUrl, {
+    method: 'POST',
+    mode: 'cors', // ✅ Changed from 'no-cors' to 'cors'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  });
 
-      setStatusMessage({ type: 'success', text: 'Shukriya! Aap ka paigham kamyabi se bhej diya gaya hai.' });
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    } catch (error) {
-      setStatusMessage({ type: 'error', text: 'Paigham bhejne mein masla hua. Baraye meharbani dobara koshish karein.' });
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (response.ok) {
+    setStatusMessage({ type: 'success', text: 'Shukriya! Aap ka paigham kamyabi se bhej diya gaya hai.' });
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+  } else {
+    throw new Error('Server error');
+  }
+} catch (error) {
+  console.error(error); // ✅ error ko console mein log karein
+  setStatusMessage({ type: 'error', text: 'Paigham bhejne mein masla hua. Baraye meharbani dobara koshish karein.' });
+} finally {
+  setLoading(false);
+}
 
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col justify-between overflow-hidden">
       <div>
-        <Navbar />
 
         {/* Dynamic Header */}
         <section className="relative bg-gradient-to-r from-green-950 via-emerald-900 to-green-900 text-white py-20 px-4 sm:px-8">
@@ -239,7 +240,6 @@ export default function ContactPage() {
           </div>
         </section>
       </div>
-      <Footer />
     </main>
   );
 }
