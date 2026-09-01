@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { Target, CheckCircle2, Award, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -12,10 +10,10 @@ export default function AboutPage() {
   const [isTouched, setIsTouched] = useState(false);
 
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col justify-between overflow-hidden relative">
+    <main className="min-h-screen bg-gray-50 flex flex-col justify-between relative">
 
       <div>
-        <Navbar />
+       
 
         {/* Dynamic Page Header - Dark Green Hero (kept as-is) */}
         <section className="relative bg-emerald-950/90 backdrop-blur-xl text-white py-20 px-4 sm:px-8 border-b border-white/10 shadow-lg">
@@ -193,7 +191,7 @@ export default function AboutPage() {
         </section>
 
       </div>
-      <Footer />
+  
     </main>
   );
 }

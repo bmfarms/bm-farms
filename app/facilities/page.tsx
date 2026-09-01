@@ -1,7 +1,5 @@
 'use client';
 
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { Factory, MapPin, CheckCircle2, Fish, Bird, Package, Sun } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -72,7 +70,6 @@ export default function FacilitiesPage() {
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col justify-between overflow-hidden">
       <div>
-        <Navbar />
 
         {/* Dynamic Page Header */}
         <section className="relative bg-gradient-to-r from-green-950 via-emerald-900 to-green-900 text-white py-20 px-4 sm:px-8">
@@ -145,7 +142,6 @@ export default function FacilitiesPage() {
         </section>
 
       </div>
-      <Footer />
     </main>
   );
 }

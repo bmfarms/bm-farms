@@ -1,17 +1,15 @@
 import FadeIn from '@/components/FadeIn';
 import DivisionTabs from '@/components/DivisionTabs';
-import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
 import ProductCatalogue from '@/components/ProductCatalogue';
 import DivisionsOverview from '@/components/DivisionsOverview';
-import Footer from '@/components/Footer';
 import WhatsAppWidget from '@/components/WhatsAppWidget';
 
 export default function Home() {
 return (
 <main className="min-h-screen bg-gray-50 overflow-x-hidden">
-<Navbar />
+
 {/* 1. Hero Section - Introduction */}
 <Hero />
 
@@ -55,7 +53,7 @@ return (
  <DivisionsOverview />
  </FadeIn>
 
- <Footer />
+
 
  {/* Persistent Floating Widget */}
  <WhatsAppWidget />
