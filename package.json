@@ -1,14 +1,15 @@
 {
   "name": "bm-farms",
-  "version": "0.1.1",  
+  "version": "0.1.1",
   "private": true,
-  "scripts": {  
+  "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "canvas-confetti": "^1.9.4",
     "framer-motion": "^12.43.0",
     "lucide-react": "^1.25.0",

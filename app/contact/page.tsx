@@ -1,4 +1,4 @@
-'use client';
+'use client';import emailjs from '@emailjs/browser';
 
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
@@ -21,34 +21,33 @@ export default function ContactPage() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatusMessage(null);
+  e.preventDefault();
+  setLoading(true);
+  setStatusMessage(null);
 
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbxN05zcRrr18zGGPlPDTNZ3QcHolPykQN3tojctPRXeVP7pM4XuS_JTOVgEkUzQytAp/exec';
-    try {
-      const response = await fetch(scriptUrl, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+  try {
+    await emailjs.send(
+      'service_h2xzixv', // ✅ Service ID
+      'template_38sp9ls', // ✅ Template ID
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+      },
+      'wNF6k-Y5NLlxnDjjG' // ✅ Public Key
+    );
 
-      if (response.ok) {
-        setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully. Our team will get back to you shortly.' });
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      } else {
-        throw new Error('Server error');
-      }
-    } catch (error) {
-      console.error(error);
-      setStatusMessage({ type: 'error', text: 'Message submission failed. Please try again or contact us directly via phone or email.' });
-    } finally {
-      setLoading(false);
-    }
-  };
+    setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully.' });
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+  } catch (error) {
+    console.error(error);
+    setStatusMessage({ type: 'error', text: 'Message submission failed. Please try again.' });
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col justify-between overflow-hidden">
