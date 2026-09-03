@@ -25,12 +25,12 @@ export default function ContactPage() {
     setLoading(true);
     setStatusMessage(null);
 
-const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   setLoading(true);
   setStatusMessage(null);
 
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbxH1gxpfZ2hib8RvwmR3tW66LXMLfqqONmWvQ0i3judiITAGo7U5vo2Kw2lrTsBz0V6eQ/exec';
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbydMkNx2k4CirJWiQ3aRYR5sc9McZaSFYjf5Y0HRqV_vvIpzznFma5TUh93IKNMspMx5A/exec';
 
   try {
     const response = await fetch(scriptUrl, {
