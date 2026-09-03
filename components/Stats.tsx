@@ -62,7 +62,7 @@ export default function Stats() {
       </div>
 
       {/* Infinite Scroll Belt Container */}
-      <div className="relative overflow-x-auto">
+      <div className="relative overflow-x-hidden">
         <div className="flex flex-nowrap gap-6 w-max px-4 sm:px-8 animate-scroll">
           {/* First set of cards */}
           {stats.map((item, index) => {
