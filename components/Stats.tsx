@@ -64,12 +64,54 @@ export default function Stats() {
       {/* Infinite Scroll Belt Container */}
       <div className="relative overflow-x-auto">
         <div className="flex flex-nowrap gap-6 w-max px-4 sm:px-8 animate-scroll">
+          {/* First set of cards */}
           {stats.map((item, index) => {
             const Icon = item.icon;
 
             return (
               <div
                 key={index}
+                className="w-[280px] sm:w-[220px] flex-shrink-0 group flex flex-col justify-between rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all duration-300 overflow-hidden cursor-pointer"
+              >
+                {/* Top Image Banner */}
+                <div className="relative h-44 w-full overflow-hidden">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 sm:group-hover:scale-110"
+                    style={{ backgroundImage: `url(${item.bgImage})` }}
+                  />
+                  <div className="absolute inset-0 bg-black/20 sm:group-hover:bg-black/10 transition-colors" />
+                  
+                  {/* Floating Icon Badge */}
+                  <div className="absolute top-3 left-3 p-2 bg-white/95 backdrop-blur-md text-emerald-800 rounded-xl border border-white/60 shadow-md">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                </div>
+
+                {/* Content Area */}
+                <div className="p-3.5 text-center flex-1 flex flex-col justify-center bg-white">
+                  <div className="text-2xl font-black text-emerald-900 tracking-tight leading-none">
+                    <Counter end={item.numericValue} suffix={item.suffix} />
+                  </div>
+
+                  <span className="text-xs font-bold text-gray-900 mt-1 leading-tight">
+                    {item.label}
+                  </span>
+
+                  <span className="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {item.subtext}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Duplicate set for infinite loop */}
+          {stats.map((item, index) => {
+            const Icon = item.icon;
+
+            return (
+              <div
+                key={`dup-${index}`}
                 className="w-[280px] sm:w-[220px] flex-shrink-0 group flex flex-col justify-between rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all duration-300 overflow-hidden cursor-pointer"
               >
                 {/* Top Image Banner */}
