@@ -25,41 +25,35 @@ export default function ContactPage() {
     setLoading(true);
     setStatusMessage(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setLoading(true);
-  setStatusMessage(null);
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbydMkNx2k4CirJWiQ3aRYR5sc9McZaSFYjf5Y0HRqV_vvIpzznFma5TUh93IKNMspMx5A/exec';
 
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbydMkNx2k4CirJWiQ3aRYR5sc9McZaSFYjf5Y0HRqV_vvIpzznFma5TUh93IKNMspMx5A/exec';
+    try {
+      const response = await fetch(scriptUrl, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-  try {
-    const response = await fetch(scriptUrl, {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully. Our team will get back to you shortly.' });
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    } else {
-      throw new Error('Server error');
+      if (response.ok) {
+        setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully. Our team will get back to you shortly.' });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatusMessage({ type: 'error', text: 'Message submission failed. Please try again or contact us directly via phone or email.' });
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    console.error(error);
-    setStatusMessage({ type: 'error', text: 'Message submission failed. Please try again or contact us directly via phone or email.' });
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col justify-between overflow-hidden">
       <div>
-
         {/* Dynamic Header */}
         <section className="relative bg-gradient-to-r from-green-950 via-emerald-900 to-green-900 text-white py-20 px-4 sm:px-8">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent pointer-events-none" />
@@ -248,4 +242,4 @@ export default function ContactPage() {
       </div>
     </main>
   );
-}}
+}
