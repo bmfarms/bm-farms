@@ -27,28 +27,29 @@ export default function ContactPage() {
 
     const scriptUrl = 'https://script.google.com/macros/s/AKfycbwFIVdV10RK5YvC8acR0a6Ia0or8qRzec2QjOMic_LHIp0Q26PJCn_c3opVo-8cQrQByg/exec';
 
-try {
-  const response = await fetch(scriptUrl, {
-    method: 'POST',
-    mode: 'cors', // ✅ Changed from 'no-cors' to 'cors'
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
-  });
+    try {
+      const response = await fetch(scriptUrl, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-  if (response.ok) {
-    setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully. Our team will get back to you shortly.' });
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-  } else {
-    throw new Error('Server error');
-  }
-} catch (error) {
-  console.error(error); // ✅ error ko console mein log karein
-  setStatusMessage({ type: 'error', text: 'Message submission failed. Please try again or contact us directly via phone or email.' });
-} finally {
-  setLoading(false);
-}}
+      if (response.ok) {
+        setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully. Our team will get back to you shortly.' });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatusMessage({ type: 'error', text: 'Message submission failed. Please try again or contact us directly via phone or email.' });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col justify-between overflow-hidden">
@@ -109,7 +110,7 @@ try {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900">Phone</h3>
-                    <p className="text-gray-600 text-sm mt-0.5">+92 300 0000000</p>
+                    <p className="text-gray-600 text-sm mt-0.5">+92 300 6333064</p>
                   </div>
                 </motion.div>
 
@@ -119,7 +120,7 @@ try {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900">Email Address</h3>
-                    <p className="text-gray-600 text-sm mt-0.5">info@bmfarms.pk</p>
+                    <p className="text-gray-600 text-sm mt-0.5">bmfarmsandservices@gmail.com</p>
                   </div>
                 </motion.div>
               </div>
@@ -186,7 +187,7 @@ try {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+92 300 0000000"
+                    placeholder="+92 300 6333064"
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none text-sm transition text-gray-900 bg-gray-50/50 focus:bg-white"
                   />
                 </div>
