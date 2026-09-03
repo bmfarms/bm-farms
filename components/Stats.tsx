@@ -61,16 +61,16 @@ export default function Stats() {
         </div>
       </div>
 
-      {/* Grid Layout Fix */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 w-full">
+      {/* Infinite Scroll Belt Container */}
+      <div className="relative overflow-x-auto">
+        <div className="flex flex-nowrap gap-6 w-max px-4 sm:px-8 animate-scroll">
           {stats.map((item, index) => {
             const Icon = item.icon;
 
             return (
               <div
                 key={index}
-                className="w-full group flex flex-col justify-between rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all duration-300 overflow-hidden cursor-pointer"
+                className="w-[280px] sm:w-[220px] flex-shrink-0 group flex flex-col justify-between rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all duration-300 overflow-hidden cursor-pointer"
               >
                 {/* Top Image Banner */}
                 <div className="relative h-44 w-full overflow-hidden">
