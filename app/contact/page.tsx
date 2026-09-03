@@ -25,31 +25,36 @@ export default function ContactPage() {
     setLoading(true);
     setStatusMessage(null);
 
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbwFIVdV10RK5YvC8acR0a6Ia0or8qRzec2QjOMic_LHIp0Q26PJCn_c3opVo-8cQrQByg/exec';
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+  setStatusMessage(null);
 
-    try {
-      const response = await fetch(scriptUrl, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbxH1gxpfZ2hib8RvwmR3tW66LXMLfqqONmWvQ0i3judiITAGo7U5vo2Kw2lrTsBz0V6eQ/exec';
 
-      if (response.ok) {
-        setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully. Our team will get back to you shortly.' });
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      } else {
-        throw new Error('Server error');
-      }
-    } catch (error) {
-      console.error(error);
-      setStatusMessage({ type: 'error', text: 'Message submission failed. Please try again or contact us directly via phone or email.' });
-    } finally {
-      setLoading(false);
+  try {
+    const response = await fetch(scriptUrl, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully. Our team will get back to you shortly.' });
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    } else {
+      throw new Error('Server error');
     }
-  };
+  } catch (error) {
+    console.error(error);
+    setStatusMessage({ type: 'error', text: 'Message submission failed. Please try again or contact us directly via phone or email.' });
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col justify-between overflow-hidden">
