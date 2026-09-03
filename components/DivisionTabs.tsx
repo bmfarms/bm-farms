@@ -49,7 +49,7 @@ export default function DivisionTabs() {
   const currentTab = divisions.find((tab) => tab.id === activeTab) || divisions[0];
 
   return (
-    <div className="max-w-5xl mx-auto py-4 px-4">
+    <div className="max-w-7xl mx-auto py-4 px-4">
       {/* Glassmorphic Tab Container */}
       <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 bg-white/40 backdrop-blur-md p-2 rounded-2xl border border-white/60 shadow-lg">
         {divisions.map((tab) => {
