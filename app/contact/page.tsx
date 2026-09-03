@@ -25,7 +25,7 @@ export default function ContactPage() {
     setLoading(true);
     setStatusMessage(null);
 
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbytkp3KL3vHQtmhZ2bgn_Ozqx71gB2-uxcSFNonfGA8OZDAcufsL07XacyLWDxxR2hX2A/exec';
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbxN05zcRrr18zGGPlPDTNZ3QcHolPykQN3tojctPRXeVP7pM4XuS_JTOVgEkUzQytAp/exec';
     try {
       const response = await fetch(scriptUrl, {
         method: 'POST',
