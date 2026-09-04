@@ -57,11 +57,11 @@ export default function Navbar() {
               </a>
 
               <a 
-                href="mailto:starfloatingfeedofficial@gmail.com" 
+                href="mailto:bmfarmsandservices@gmail.com" 
                 className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors whitespace-nowrap"
               >
                 <Mail size={13} className="text-emerald-400 shrink-0" />
-                <span>starfloatingfeedofficial@gmail.com</span>
+                <span>bmfarmsandservices@gmail.com</span>
               </a>
             </div>
 
@@ -87,11 +87,11 @@ export default function Navbar() {
               </a>
 
               <a 
-                href="mailto:starfloatingfeedofficial@gmail.com" 
+                href="mailto:bmfarmsandservices@gmail.com" 
                 className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors whitespace-nowrap"
               >
                 <Mail size={13} className="text-emerald-400 shrink-0" />
-                <span>starfloatingfeedofficial@gmail.com</span>
+                <span>bmfarmsandservices@gmail.com</span>
               </a>
             </div>
 
