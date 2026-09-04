@@ -32,13 +32,9 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-gray-950/90" />
 
       {/* Hero Text Content */}
-      {/*<motion.div 
-        style={{ y: textY, opacity }} 
+      <div 
         className="relative text-center text-white px-4 w-full max-w-7xl mx-auto z-10 flex flex-col items-center"
-      > */}  
-
-      <div className="relative text-center text-white px-4 w-full max-w-7xl mx-auto z-10 flex flex-col items-center"></div>
-
+      >        
         {/* Badge */}
         <motion.span 
           initial={{ opacity: 0, y: -15 }}
@@ -91,7 +87,7 @@ export default function Hero() {
             Get In Touch
           </Link>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Animated Scroll Indicator */}
       <motion.div 
