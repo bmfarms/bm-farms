@@ -50,17 +50,15 @@ return (
 </section>
 </FadeIn>
 
-// ... inside Home component
-<FadeIn delay={0.5}>
-  <Testimonials />
-</FadeIn>
-
  {/* 5. Group Standards & Quality Assurance */}
  <FadeIn delay={0.4}>
  <DivisionsOverview />
  </FadeIn>
 
-
+// ... inside Home component
+<FadeIn delay={0.5}>
+  <Testimonials />
+</FadeIn>
 
  {/* Persistent Floating Widget */}
  <WhatsAppWidget />
