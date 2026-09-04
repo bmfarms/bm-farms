@@ -11,9 +11,8 @@ return (
 <main className="min-h-screen bg-gray-50 overflow-x-hidden">
 
 {/* 1. Hero Section - Introduction */}
-<div className="w-full">
   <Hero />
-</div>
+
 
 {/* 2. Key Group Achievements / Stats */}
 <FadeIn delay={0.1}>
