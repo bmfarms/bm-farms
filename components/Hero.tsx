@@ -16,8 +16,7 @@ export default function Hero() {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
 
   return (
-<section ref={ref} className="relative min-h-[85vh] sm:min-h-[90vh] overflow-x-hidden flex items-center justify-center bg-gray-950 w-full">      {/* Parallax Background Image */}
-      <motion.div
+<section ref={ref} className="relative h-[85vh] sm:h-[90vh] overflow-hidden flex items-center justify-center bg-gray-950 w-full">      <motion.div
         style={{
           y: backgroundY,
           backgroundImage: `url('/hero-bg.jpg')`,
