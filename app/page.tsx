@@ -5,7 +5,7 @@ import Stats from '@/components/Stats';
 import ProductCatalogue from '@/components/ProductCatalogue';
 import DivisionsOverview from '@/components/DivisionsOverview';
 import WhatsAppWidget from '@/components/WhatsAppWidget';
-
+import Testimonials from '@/components/Testimonials';
 export default function Home() {
 return (
 <main className="min-h-screen bg-gray-50 overflow-x-hidden">
@@ -48,6 +48,11 @@ return (
  <DivisionTabs />
  </div>
 </section>
+</FadeIn>
+
+// ... inside Home component
+<FadeIn delay={0.5}>
+  <Testimonials />
 </FadeIn>
 
  {/* 5. Group Standards & Quality Assurance */}
