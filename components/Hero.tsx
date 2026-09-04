@@ -14,8 +14,6 @@ export default function Hero() {
   });
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '40%']);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
   return (
     <section ref={ref} className="relative h-[85vh] sm:h-[90vh] overflow-hidden flex items-center justify-center bg-gray-950 w-full">
@@ -32,9 +30,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-gray-950/90" />
 
       {/* Hero Text Content */}
-      <div 
-        className="relative text-center text-white px-4 w-full max-w-7xl mx-auto z-10 flex flex-col items-center"
-      >        
+      <div className="relative text-center text-white px-4 w-full max-w-7xl mx-auto z-10 flex flex-col items-center">
         {/* Badge */}
         <motion.span 
           initial={{ opacity: 0, y: -15 }}
