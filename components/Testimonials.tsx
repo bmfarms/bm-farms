@@ -38,6 +38,7 @@ const testimonials = [
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const nextSlide = () => {
     setDirection(1);
@@ -50,9 +51,10 @@ export default function Testimonials() {
   };
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5000);
+    if (isPaused) return;
+    const timer = setInterval(nextSlide, 8000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isPaused, current]);
 
   return (
     <section className="py-16 bg-gradient-to-br from-emerald-50/60 via-teal-50/40 to-emerald-100/40 border-t border-emerald-100/80 relative overflow-hidden">
@@ -131,8 +133,8 @@ export default function Testimonials() {
             <ChevronRight className="w-5 h-5 text-emerald-900" />
           </button>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-6">
+          {/* Dots Indicator + Pause/Play Button */}
+          <div className="flex justify-center items-center gap-2 mt-6">
             {testimonials.map((_, index) => (
               <button
                 key={index}
@@ -143,6 +145,13 @@ export default function Testimonials() {
                 aria-label={`Go to review ${index + 1}`}
               />
             ))}
+            
+            <button
+              onClick={() => setIsPaused(!isPaused)}
+              className="ml-4 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold hover:bg-emerald-200 transition-colors"
+            >
+              {isPaused ? '▶ Play' : '⏸ Pause'}
+            </button>
           </div>
         </div>
       </div>
